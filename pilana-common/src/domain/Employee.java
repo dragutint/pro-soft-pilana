@@ -24,6 +24,11 @@ public class Employee implements Serializable{
     public Employee(Integer id) {
         this.id = id;
     }
+    
+    public Employee(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public Employee(Integer id, String firstName, String lastName, String username, String password) {
         this.id = id;
@@ -72,4 +77,11 @@ public class Employee implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password=" + password + '}';
+    }
+    
+    
 }

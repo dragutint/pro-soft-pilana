@@ -29,7 +29,7 @@ public class ServerThread extends Thread {
     public void run() {
         System.out.println("Server is started successfully, listening on port: " + serverSocket.getLocalPort());
 
-        while (true) {
+        while (!serverSocket.isClosed()) {
             try {
                 Socket newClient = serverSocket.accept();
                 
@@ -40,6 +40,7 @@ public class ServerThread extends Thread {
 
                 System.out.println("New client is connected: " + newClient.getLocalAddress());
             } catch (IOException ex) {
+//                System.out.println("ovde pucam");
                 System.err.println(ex.getMessage());
             }
         }

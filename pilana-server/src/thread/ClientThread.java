@@ -5,6 +5,7 @@
  */
 package thread;
 
+import domain.Employee;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -61,9 +62,14 @@ public class ClientThread extends Thread {
         Object data = null;
         
         switch (requestObject.getOperation()) {
-
+            case LOGIN:
+                Employee emp = (Employee) requestObject.getData();
+                emp.setId(1);
+                emp.setFirstName("Miki");
+                emp.setLastName("Milane");
+                return new ResponseObject(DResponseStatus.SUCCESS, "nothing", emp);
         }
         
-        return new ResponseObject(DResponseStatus.SUCCESS, "", data);
+        return new ResponseObject(DResponseStatus.SUCCESS, "Kao uspeli smo", data);
     }
 }
