@@ -5,10 +5,14 @@
  */
 package bl.controller;
 
+import bl.service.ClientService;
 import domain.Employee;
 import bl.service.UserService;
+import bl.service.impl.ClientServiceImpl;
 import bl.service.impl.UserServiceImpl;
 import domain.Client;
+import domain.IGeneralObject;
+import java.util.List;
 
 /**
  *
@@ -16,10 +20,12 @@ import domain.Client;
  */
 public class Controller {
     private static Controller instance;
-    private static UserService userService;
+    private final UserService userService;
+    private final ClientService clientService;
     
     private Controller(){
         userService = new UserServiceImpl();
+        clientService = new ClientServiceImpl();
     }
     
     public static Controller getInstance(){
@@ -32,8 +38,11 @@ public class Controller {
         return userService.login(employee);
     }
 
-    public Client addNewClient(Client client) {
-        client.setId(5);
-        return client;
+    public Client addNewClient(Client client) throws Exception{
+        return clientService.add(client);
+    }
+
+    public List<IGeneralObject> findClients() throws Exception {
+        return clientService.find();
     }
 }

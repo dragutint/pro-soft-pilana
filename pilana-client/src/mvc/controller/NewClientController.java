@@ -7,13 +7,12 @@ package mvc.controller;
 
 import domain.Client;
 import domain.ClientType;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import java.util.List;
-import javax.swing.JOptionPane;
 import mvc.model.NewClientModel;
-import mvc.view.FClient;
+import mvc.view.validation.NewClientValidation;
 import mvc.view.FNewClient;
 import transfer.ResponseObject;
 
@@ -25,9 +24,8 @@ public class NewClientController extends AbstractController{
     FNewClient view;
     NewClientModel model;
     
-    public NewClientController(FClient mainForm, List<ClientType> clientTypes) {
+    public NewClientController(Component comp, List<ClientType> clientTypes) {
         view = new FNewClient(clientTypes);
-        view.setComponentOrientation(mainForm.getComponentOrientation());
         model = new NewClientModel();
         
         view.setVisible(true);
@@ -38,19 +36,13 @@ public class NewClientController extends AbstractController{
     private class AddNewClientListener implements ActionListener {
 
         @Override
-        public void actionPerformed(ActionEvent e) {
-            Client newClient = new Client(
-                    null,
-                    view.getTxtFirstName().getText().trim(),
-                    view.getTxtLastName().getText().trim(),
-                    new Date(System.currentTimeMillis()), 
-                    (ClientType) view.getCmbClientType().getSelectedItem());
-            
+        public void actionPerformed(ActionEvent e) {        
             try {
+                Client newClient = NewClientValidation.getFormClient(view.getTxtFirstName(), view.getTxtLastName(), view.getCmbClientType());
                 ResponseObject response = model.addNewClient(newClient);
                 showMessage(view, response.getMessage());
             } catch (Exception ex) {
-                showError(view, ex.getMessage());
+                showError(view, ex.getMessage(), NewClientController.class.getName(), ex);
             }
         }
     }

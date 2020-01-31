@@ -1,2 +1,4 @@
 /pilana-server/build/
 /pilana-client/build/
+/pilana-client/dist/
+/pilana-server/dist/

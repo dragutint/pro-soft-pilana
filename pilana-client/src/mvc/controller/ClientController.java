@@ -8,6 +8,8 @@ package mvc.controller;
 import domain.Employee;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mvc.view.FClient;
 import mvc.model.ClientModel;
 
@@ -25,6 +27,7 @@ public class ClientController extends AbstractController{
         
         view.setVisible(true);
         view.setNewClientListener(new NewClientListener());
+        view.setSearchClientListener(new SearchClientListener());
     }
     
     private class NewClientListener implements ActionListener {
@@ -32,6 +35,18 @@ public class ClientController extends AbstractController{
         @Override
         public void actionPerformed(ActionEvent e) {
             new NewClientController(view, model.getClientTypes());
+        }
+    }
+    
+    private class SearchClientListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                new SearchClientController(view, model.getClients());
+            } catch (Exception ex) {
+                showError(view, ex.getMessage(), ClientController.class.getName(), ex);
+            }
         }
     }
 }

@@ -34,7 +34,7 @@ public class FClient extends javax.swing.JFrame {
 
         btnNewClient = new javax.swing.JButton();
         lblUser = new javax.swing.JLabel();
-        btnFindClient = new javax.swing.JButton();
+        btnSearchClient = new javax.swing.JButton();
         btnEditClient = new javax.swing.JButton();
         btnDeleteClient = new javax.swing.JButton();
         btnFindWoodProduct = new javax.swing.JButton();
@@ -50,7 +50,7 @@ public class FClient extends javax.swing.JFrame {
 
         lblUser.setText("jLabel1");
 
-        btnFindClient.setText("Find client");
+        btnSearchClient.setText("Search clients");
 
         btnEditClient.setText("Edit client");
 
@@ -72,7 +72,7 @@ public class FClient extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnNewClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnFindClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSearchClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEditClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDeleteClient, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
@@ -96,7 +96,7 @@ public class FClient extends javax.swing.JFrame {
                     .addComponent(btnFindWoodProduct))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFindClient)
+                    .addComponent(btnSearchClient)
                     .addComponent(btnNewInvoice))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -119,11 +119,11 @@ public class FClient extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteClient;
     private javax.swing.JButton btnEditClient;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnFindClient;
     private javax.swing.JButton btnFindInvoice;
     private javax.swing.JButton btnFindWoodProduct;
     private javax.swing.JButton btnNewClient;
     private javax.swing.JButton btnNewInvoice;
+    private javax.swing.JButton btnSearchClient;
     private javax.swing.JLabel lblUser;
     // End of variables declaration//GEN-END:variables
 
@@ -131,7 +131,11 @@ public class FClient extends javax.swing.JFrame {
         lblUser.setText(emp.toString());
     }
 
-    public void setNewClientListener(ActionListener newClientListener) {
-        btnNewClient.addActionListener(newClientListener);
+    public void setNewClientListener(ActionListener listener) {
+        btnNewClient.addActionListener(listener);
+    }
+
+    public void setSearchClientListener(ActionListener listener) {
+        btnSearchClient.addActionListener(listener);
     }
 }

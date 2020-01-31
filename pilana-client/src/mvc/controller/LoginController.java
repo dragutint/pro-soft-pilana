@@ -63,7 +63,7 @@ public class LoginController extends AbstractController{
                 
                 showMessage(view, response.getMessage());
             } catch (Exception ex) {
-                showError(view, ex.getMessage());
+                showError(view, ex.getMessage(), LoginController.class.getName(), ex);
             }
         }
     }

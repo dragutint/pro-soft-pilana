@@ -11,5 +11,5 @@ package util;
  */
 public enum DOperation {
     LOGIN, 
-    ADD_NEW_CLIENT
+    ADD_NEW_CLIENT, FIND_CLIENTS
 }

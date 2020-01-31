@@ -12,7 +12,7 @@ package domain;
 public enum ClientType {
     BRONZE(1),
     SILVER(2),
-    PLATINUM(3);
+    GOLD(3);
 
     private final int id;
     
@@ -22,5 +22,14 @@ public enum ClientType {
         
     public int getId(){
         return this.id;
+    }
+
+    public static ClientType getById(int id) {
+        for (ClientType e : values()) {
+            if (e.getId() == id) {
+                return e;
+            }
+        }
+        return null;
     }
 }

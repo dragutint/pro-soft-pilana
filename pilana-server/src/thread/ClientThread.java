@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import transfer.RequestObject;
 import transfer.ResponseObject;
 import util.DResponseStatus;
@@ -71,11 +73,15 @@ public class ClientThread extends Thread {
                 case ADD_NEW_CLIENT:
                     data = bl.controller.Controller.getInstance().addNewClient((Client)requestObject.getData());
                     msg = "Successfully added new Client. Generated ID: " + ((Client)data).getId(); break;
+                case FIND_CLIENTS:
+                    data = bl.controller.Controller.getInstance().findClients();
+                    msg = "Succesfully found all clients."; break;
                 default:
                     throw new Exception("Invalid operation");
             }            
             return new ResponseObject(DResponseStatus.SUCCESS, msg, data);
         } catch (Exception ex) {
+            Logger.getLogger(ClientThread.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseObject(DResponseStatus.ERROR, ex.getMessage(), null);
         }
     }

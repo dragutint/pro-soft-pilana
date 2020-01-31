@@ -130,11 +130,11 @@ public class Client implements Serializable, IGeneralObject {
             c.setFirstName(rs.getString("first_name"));
             c.setLastName(rs.getString("last_name"));
             c.setRegistrationDate(rs.getDate("registration_date"));
+            c.setClientType(ClientType.getById(rs.getInt("client_type_id")));
             list.add(c);
         }
         
         return list;
-    }
-    
+    }    
     
 }
