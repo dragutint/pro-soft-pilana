@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package mvc.controller;
 
 import domain.Employee;
-import form.FClient;
-import model.ClientModel;
+import mvc.view.FClient;
+import mvc.model.ClientModel;
 
 /**
  *

@@ -39,6 +39,8 @@ public class FMain extends javax.swing.JFrame {
         lblErrorMsg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(500, 500, 0, 0));
+        setResizable(false);
 
         lblStatusPlaceHolder.setText("Status:");
 

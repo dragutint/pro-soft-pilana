@@ -10,8 +10,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import transfer.RequestObject;
 import transfer.ResponseObject;
 import util.DResponseStatus;
@@ -67,7 +65,7 @@ public class ClientThread extends Thread {
             
             switch (requestObject.getOperation()) {
                 case LOGIN:
-                    data = controller.Controller.getInstance().login((Employee) requestObject.getData()); break;
+                    data = bl.controller.Controller.getInstance().login((Employee) requestObject.getData()); break;
                 default:
                     throw new Exception("Invalid operation");
             }            

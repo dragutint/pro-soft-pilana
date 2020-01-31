@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
-
-import domain.Employee;
-import java.util.List;
+package mvc.model;
 
 /**
  *
  * @author Dudat
  */
-public interface UserDao {
-
-    public Employee get(String username) throws Exception;
+public class ClientModel {
     
 }

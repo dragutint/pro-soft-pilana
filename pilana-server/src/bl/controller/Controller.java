@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package bl.controller;
 
 import domain.Employee;
-import service.UserService;
-import service.impl.UserServiceImpl;
+import bl.service.UserService;
+import bl.service.impl.UserServiceImpl;
 
 /**
  *

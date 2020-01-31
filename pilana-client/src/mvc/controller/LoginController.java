@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package mvc.controller;
 
 import domain.Employee;
-import form.FLogin;
+import mvc.view.FLogin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
-import model.LoginModel;
+import mvc.model.LoginModel;
 
 /**
  *

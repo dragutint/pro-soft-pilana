@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao.impl;
+package bl.dao.impl;
 
-import dao.UserDao;
-import dao.util.ConnectionFactory;
+import bl.dao.UserDao;
+import bl.dao.util.ConnectionFactory;
 import domain.Employee;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

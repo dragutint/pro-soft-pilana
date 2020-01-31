@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package form;
+package mvc.view;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -40,6 +40,7 @@ public class FLogin extends javax.swing.JFrame {
         lblErrorMsg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(500, 100, 0, 0));
 
         jLabel1.setText("Username");
 

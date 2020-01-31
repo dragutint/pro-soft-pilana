@@ -40,7 +40,6 @@ public class ServerThread extends Thread {
 
                 System.out.println("New client is connected: " + newClient.getLocalAddress());
             } catch (IOException ex) {
-//                System.out.println("ovde pucam");
                 System.err.println(ex.getMessage());
             }
         }

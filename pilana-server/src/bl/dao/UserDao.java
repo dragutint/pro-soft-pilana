@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service;
+package bl.dao;
 
 import domain.Employee;
 
@@ -11,8 +11,8 @@ import domain.Employee;
  *
  * @author Dudat
  */
-public interface UserService {
+public interface UserDao {
 
-    public Employee login(Employee employee) throws Exception;
+    public Employee get(String username) throws Exception;
     
 }

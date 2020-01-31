@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package bl.service;
+
+import domain.Employee;
 
 /**
  *
  * @author Dudat
  */
-public class ClientModel {
+public interface UserService {
+
+    public Employee login(Employee employee) throws Exception;
     
 }

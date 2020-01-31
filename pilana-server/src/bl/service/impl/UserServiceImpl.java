@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service.impl;
+package bl.service.impl;
 
-import dao.UserDao;
-import dao.impl.UserDaoImpl;
+import bl.dao.UserDao;
+import bl.dao.impl.UserDaoImpl;
 import domain.Employee;
-import service.UserService;
-import validation.user.UserValidation;
+import bl.service.UserService;
+import bl.validation.user.UserValidation;
 
 /**
  *

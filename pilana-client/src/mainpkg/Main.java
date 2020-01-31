@@ -5,7 +5,7 @@
  */
 package mainpkg;
 
-import controller.LoginController;
+import mvc.controller.LoginController;
 
 /**
  *
