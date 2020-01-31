@@ -10,5 +10,6 @@ package util;
  * @author Dudat
  */
 public enum DOperation {
-    LOGIN
+    LOGIN, 
+    ADD_NEW_CLIENT
 }

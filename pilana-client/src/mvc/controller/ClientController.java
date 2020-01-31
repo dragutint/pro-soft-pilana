@@ -6,6 +6,8 @@
 package mvc.controller;
 
 import domain.Employee;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import mvc.view.FClient;
 import mvc.model.ClientModel;
 
@@ -13,7 +15,7 @@ import mvc.model.ClientModel;
  *
  * @author Dudat
  */
-public class ClientController {
+public class ClientController extends AbstractController{
     FClient view; 
     ClientModel model;
    
@@ -22,5 +24,14 @@ public class ClientController {
         model = new ClientModel();
         
         view.setVisible(true);
+        view.setNewClientListener(new NewClientListener());
+    }
+    
+    private class NewClientListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            new NewClientController(view, model.getClientTypes());
+        }
     }
 }

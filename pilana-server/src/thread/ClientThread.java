@@ -5,6 +5,7 @@
  */
 package thread;
 
+import domain.Client;
 import domain.Employee;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -65,7 +66,11 @@ public class ClientThread extends Thread {
             
             switch (requestObject.getOperation()) {
                 case LOGIN:
-                    data = bl.controller.Controller.getInstance().login((Employee) requestObject.getData()); break;
+                    data = bl.controller.Controller.getInstance().login((Employee) requestObject.getData()); 
+                    msg = "Successfully logged in, user: " + data; break;
+                case ADD_NEW_CLIENT:
+                    data = bl.controller.Controller.getInstance().addNewClient((Client)requestObject.getData());
+                    msg = "Successfully added new Client. Generated ID: " + ((Client)data).getId(); break;
                 default:
                     throw new Exception("Invalid operation");
             }            

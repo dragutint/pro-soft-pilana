@@ -19,21 +19,21 @@ import util.DResponseStatus;
  *
  * @author Dudat
  */
-public class ThreadSingleton {
+public class ThreadController {
 
-    private static ThreadSingleton instance;
+    private static ThreadController instance;
     private Socket socket;
     private final ObjectOutputStream objectOutputStream;
     private final ObjectInputStream objectInputStream;
 
-    public static ThreadSingleton getInstance() throws IOException {
+    public static ThreadController getInstance() throws IOException {
         if (instance == null) {
-            instance = new ThreadSingleton();
+            instance = new ThreadController();
         }
         return instance;
     }
 
-    private ThreadSingleton() throws IOException {
+    private ThreadController() throws IOException {
         socket = new Socket("localhost", 9050);
         objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         objectOutputStream.flush();
@@ -72,7 +72,7 @@ public class ThreadSingleton {
         ResponseObject responseObject = (ResponseObject) objectInputStream.readObject();
 
         if (responseObject.getStatus() == DResponseStatus.SUCCESS) {
-            return responseObject.getData();
+            return responseObject;
         } else {
             throw new Exception(responseObject.getMessage());
         }

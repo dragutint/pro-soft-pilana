@@ -13,12 +13,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import mvc.model.LoginModel;
+import transfer.ResponseObject;
 
 /**
  *
  * @author Dudat
  */
-public class LoginController {
+public class LoginController extends AbstractController{
 
     FLogin view;
     LoginModel model;
@@ -55,14 +56,15 @@ public class LoginController {
             String username = view.getUsername().getText().trim();
             String password = view.getPassword().getText().trim();
             try {
-                Employee emp = model.login(username, password);
-
-                new ClientController(emp);
+                ResponseObject response = model.login(username, password);
+                
+                new ClientController((Employee) response.getData());
                 view.dispose();
+                
+                showMessage(view, response.getMessage());
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage());
+                showError(view, ex.getMessage());
             }
-
         }
     }
 }

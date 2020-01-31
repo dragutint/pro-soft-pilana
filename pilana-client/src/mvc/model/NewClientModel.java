@@ -5,7 +5,8 @@
  */
 package mvc.model;
 
-import domain.Employee;
+import domain.Client;
+import java.io.IOException;
 import thread.ThreadController;
 import transfer.ResponseObject;
 import util.DOperation;
@@ -14,10 +15,10 @@ import util.DOperation;
  *
  * @author Dudat
  */
-public class LoginModel {
-    
-    public ResponseObject login(String username, String password) throws Exception {
-        Employee emp = new Employee(username, password);
-        return (ResponseObject) ThreadController.getInstance().request(DOperation.LOGIN, emp);
+public class NewClientModel {
+
+    public ResponseObject addNewClient(Client newClient) throws IOException, Exception {
+        return (ResponseObject) ThreadController.getInstance().request(DOperation.ADD_NEW_CLIENT, newClient);
     }
+    
 }

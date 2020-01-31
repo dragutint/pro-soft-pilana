@@ -8,6 +8,7 @@ package bl.controller;
 import domain.Employee;
 import bl.service.UserService;
 import bl.service.impl.UserServiceImpl;
+import domain.Client;
 
 /**
  *
@@ -29,5 +30,10 @@ public class Controller {
 
     public Employee login(Employee employee) throws Exception {
         return userService.login(employee);
+    }
+
+    public Client addNewClient(Client client) {
+        client.setId(5);
+        return client;
     }
 }

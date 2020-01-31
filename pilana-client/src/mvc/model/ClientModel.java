@@ -5,10 +5,19 @@
  */
 package mvc.model;
 
+import domain.ClientType;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+
 /**
  *
  * @author Dudat
  */
 public class ClientModel {
+
+    public List<ClientType> getClientTypes() {
+        return new ArrayList<>(EnumSet.allOf(ClientType.class));
+    }
     
 }

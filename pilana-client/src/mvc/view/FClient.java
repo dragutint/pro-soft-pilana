@@ -6,6 +6,8 @@
 package mvc.view;
 
 import domain.Employee;
+import java.awt.event.ActionListener;
+import mvc.controller.ClientController;
 
 /**
  *
@@ -41,6 +43,7 @@ public class FClient extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(500, 100, 0, 0));
         setResizable(false);
 
         btnNewClient.setText("New client");
@@ -126,5 +129,9 @@ public class FClient extends javax.swing.JFrame {
 
     private void prepareForm(Employee emp) {
         lblUser.setText(emp.toString());
+    }
+
+    public void setNewClientListener(ActionListener newClientListener) {
+        btnNewClient.addActionListener(newClientListener);
     }
 }

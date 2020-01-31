@@ -30,7 +30,7 @@ public class Client implements Serializable, IGeneralObject {
         this.id = id;
     }
 
-    public Client(int id, String firstName, String lastName, Date registrationDate, ClientType clientType) {
+    public Client(Integer id, String firstName, String lastName, Date registrationDate, ClientType clientType) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
