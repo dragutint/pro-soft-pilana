@@ -6,14 +6,21 @@
 package controller;
 
 import domain.Employee;
+import form.FClient;
+import model.ClientModel;
 
 /**
  *
  * @author Dudat
  */
 public class ClientController {
-    
+    FClient view; 
+    ClientModel model;
+   
     public ClientController(Employee emp) {
-        System.out.println("EMPLOEEE " + emp.getId());
+        view = new FClient(emp);
+        model = new ClientModel();
+        
+        view.setVisible(true);
     }
 }

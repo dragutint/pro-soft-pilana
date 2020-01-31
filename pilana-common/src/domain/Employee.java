@@ -80,7 +80,7 @@ public class Employee implements Serializable{
 
     @Override
     public String toString() {
-        return "Employee{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password=" + password + '}';
+        return this.firstName + " " + this.lastName + ", username: " + this.username;
     }
     
     

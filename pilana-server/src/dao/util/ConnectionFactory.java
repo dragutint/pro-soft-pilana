@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 
     private Connection connection;
-    public static ConnectionFactory instance;
+    private static ConnectionFactory instance;
 
     private ConnectionFactory() throws SQLException {
         try {

@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import transfer.RequestObject;
 import transfer.ResponseObject;
 import util.DResponseStatus;
@@ -59,17 +61,19 @@ public class ClientThread extends Thread {
     }
 
     private ResponseObject handleRequest(RequestObject requestObject) {
-        Object data = null;
-        
-        switch (requestObject.getOperation()) {
-            case LOGIN:
-                Employee emp = (Employee) requestObject.getData();
-                emp.setId(1);
-                emp.setFirstName("Miki");
-                emp.setLastName("Milane");
-                return new ResponseObject(DResponseStatus.SUCCESS, "nothing", emp);
+        try {
+            Object data = null;
+            String msg = null;
+            
+            switch (requestObject.getOperation()) {
+                case LOGIN:
+                    data = controller.Controller.getInstance().login((Employee) requestObject.getData()); break;
+                default:
+                    throw new Exception("Invalid operation");
+            }            
+            return new ResponseObject(DResponseStatus.SUCCESS, msg, data);
+        } catch (Exception ex) {
+            return new ResponseObject(DResponseStatus.ERROR, ex.getMessage(), null);
         }
-        
-        return new ResponseObject(DResponseStatus.SUCCESS, "Kao uspeli smo", data);
     }
 }

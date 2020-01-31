@@ -39,9 +39,8 @@ public class LoginController {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) 
                 view.getBtnLogin().doClick();
-            }
         }
         
         @Override
@@ -57,7 +56,7 @@ public class LoginController {
             String password = view.getPassword().getText().trim();
             try {
                 Employee emp = model.login(username, password);
-                System.out.println("Da li dodjem ovde jbt");
+
                 new ClientController(emp);
                 view.dispose();
             } catch (Exception ex) {
