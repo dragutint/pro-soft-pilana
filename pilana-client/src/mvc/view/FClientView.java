@@ -13,6 +13,7 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import mvc.ViewMode;
+import util.DConstants;
 
 /**
  *
@@ -149,7 +150,7 @@ public class FClientView extends javax.swing.JFrame {
         txtID.setText(String.valueOf(c.getId()));
         txtFirstName.setText(c.getFirstName());
         txtLastName.setText(c.getLastName());
-        txtRegistrationDate.setText(new SimpleDateFormat("dd.MM.YYYY.").format(c.getRegistrationDate()));        
+        txtRegistrationDate.setText(new SimpleDateFormat(DConstants.DATE_FORMAT).format(c.getRegistrationDate()));        
         cmbClientType.addItem(c.getClientType());
         cmbClientType.setSelectedItem(c.getClientType());
         

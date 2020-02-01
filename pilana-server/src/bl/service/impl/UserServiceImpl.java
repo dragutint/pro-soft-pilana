@@ -9,7 +9,7 @@ import bl.dao.UserDao;
 import bl.dao.impl.UserDaoImpl;
 import domain.Employee;
 import bl.service.UserService;
-import bl.validation.user.UserValidation;
+import bl.service.util.validation.user.UserValidation;
 
 /**
  *

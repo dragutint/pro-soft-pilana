@@ -8,13 +8,10 @@ package mvc.controller;
 import domain.Client;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
 import mvc.ViewMode;
 import mvc.model.EditClientModel;
 import mvc.view.FClientView;
-import mvc.view.util.FormHelper;
-import mvc.view.validation.ClientValidation;
+import mvc.view.util.form_getter.ClientFormGetter;
 import transfer.ResponseObject;
 
 /**
@@ -40,7 +37,7 @@ public class EditClientController extends AbstractController {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                Client client = FormHelper.getFormClient(view.getTxtId(), view.getTxtFirstName(), view.getTxtLastName(), view.getTxtRegistrationDate(), view.getCmbClientType());
+                Client client = ClientFormGetter.get(view.getTxtId(), view.getTxtFirstName(), view.getTxtLastName(), view.getTxtRegistrationDate(), view.getCmbClientType());
                 ResponseObject response = model.editClient(client);
                 showMessage(view, response.getMessage());
             } catch (Exception ex) {

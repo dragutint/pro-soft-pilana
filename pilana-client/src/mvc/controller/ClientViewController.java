@@ -15,15 +15,9 @@ import mvc.view.FClientView;
  */
 public class ClientViewController extends AbstractController {
     FClientView view;
-    ViewMode mode;
     
-    public ClientViewController(Client selectedClient, ViewMode mode) {
-        this.mode = mode;
-        this.view = new FClientView(selectedClient, mode);
-        
-        if(mode.equals(ViewMode.EDIT)){
-            // set action listener for button
-        }
+    public ClientViewController(Client selectedClient) {
+        this.view = new FClientView(selectedClient, ViewMode.PREVIEW);
         
         view.setVisible(true);
     }

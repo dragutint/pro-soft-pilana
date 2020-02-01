@@ -20,6 +20,7 @@ public class ConnectionFactory {
 
     private ConnectionFactory() throws SQLException {
         try {
+            // TODO move to properties file
             String url = "jdbc:mysql://localhost:3306/sawmill";
             String username = "root";
             String password = "";

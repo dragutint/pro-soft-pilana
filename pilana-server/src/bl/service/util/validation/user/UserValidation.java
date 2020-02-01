@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bl.validation.user;
+package bl.service.util.validation.user;
 
 import domain.Employee;
 

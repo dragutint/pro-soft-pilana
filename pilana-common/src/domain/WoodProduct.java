@@ -19,14 +19,24 @@ public class WoodProduct implements Serializable, IGeneralObject{
     private Integer id;
     private String name;
     private Double price;
+    private Integer balance;
 
     public WoodProduct() {
     }
 
-    public WoodProduct(Integer id, String name, Double price) {
+    public WoodProduct(Integer id, String name, Double price, Integer balance) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.balance = balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
+    }
+
+    public Integer getBalance() {
+        return balance;
     }
 
     public Integer getId() {
@@ -60,7 +70,7 @@ public class WoodProduct implements Serializable, IGeneralObject{
 
     @Override
     public String getColumnNamesForInsert() {
-        return "name, price";
+        return "name, price, balance";
     }
 
     @Override
@@ -70,6 +80,8 @@ public class WoodProduct implements Serializable, IGeneralObject{
                 .append(this.name)
                 .append("', ")
                 .append(this.price)
+                .append(", ")
+                .append(this.balance)
                 .toString();
     }
 
@@ -85,6 +97,7 @@ public class WoodProduct implements Serializable, IGeneralObject{
         wp.setId(rs.getInt("id"));
         wp.setName(rs.getString("name"));
         wp.setPrice(rs.getDouble("price"));
+        wp.setBalance(rs.getInt("balance"));
         
         return wp;
     }
@@ -104,6 +117,7 @@ public class WoodProduct implements Serializable, IGeneralObject{
             wp.setId(rs.getInt("id"));
             wp.setName(rs.getString("name"));
             wp.setPrice(rs.getDouble("price"));
+            wp.setBalance(rs.getInt("balance"));
             
             list.add(wp);
         }

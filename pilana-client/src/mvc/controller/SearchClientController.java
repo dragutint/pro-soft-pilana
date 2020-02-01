@@ -76,7 +76,7 @@ public class SearchClientController extends AbstractController{
         @Override
         public void actionPerformed(ActionEvent e) {
             Client selectedClient = view.getTableModel().getSelected(view.getSelectedRow());
-            new ClientViewController(selectedClient, mode);
+            new ClientViewController(selectedClient);
             view.dispose();
         }
     }
