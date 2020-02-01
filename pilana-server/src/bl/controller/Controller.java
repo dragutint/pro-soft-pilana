@@ -8,10 +8,13 @@ package bl.controller;
 import bl.service.ClientService;
 import domain.Employee;
 import bl.service.UserService;
+import bl.service.WoodProductService;
 import bl.service.impl.ClientServiceImpl;
 import bl.service.impl.UserServiceImpl;
+import bl.service.impl.WoodProductServiceImpl;
 import domain.Client;
 import domain.IGeneralObject;
+import domain.WoodProduct;
 import java.util.List;
 
 /**
@@ -22,10 +25,12 @@ public class Controller {
     private static Controller instance;
     private final UserService userService;
     private final ClientService clientService;
+    private final WoodProductService woodProductService;
     
     private Controller(){
         userService = new UserServiceImpl();
         clientService = new ClientServiceImpl();
+        woodProductService = new WoodProductServiceImpl();
     }
     
     public static Controller getInstance(){
@@ -52,5 +57,9 @@ public class Controller {
 
     public void deleteClient(Client client) throws Exception{
         clientService.delete(client);
+    }
+
+    public List<IGeneralObject> findWoodProducts() throws Exception{
+        return woodProductService.find();
     }
 }

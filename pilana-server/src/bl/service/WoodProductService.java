@@ -3,18 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package util;
+package bl.service;
+
+import domain.IGeneralObject;
+import java.util.List;
 
 /**
  *
  * @author Dudat
  */
-public enum DOperation {
-    LOGIN, 
-    ADD_NEW_CLIENT, 
-    FIND_CLIENTS, 
-    EDIT_CLIENT,
-    DELETE_CLIENT,
-    FIND_WOOD_PRODUCTS,
-    ;
+public interface WoodProductService {
+
+    public List<IGeneralObject> find() throws Exception;
+    
 }

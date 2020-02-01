@@ -29,6 +29,7 @@ public class MainScreenController extends AbstractController{
         view.setPreviewClientListener(new ClientPreviewListener());
         view.setEditClientListener(new EditClientListener());
         view.setDeleteClientListener(new DeleteClientListener());
+        view.setPreviewWoodProductListeer(new WoodProductPreviewListener());
     }
     
     private class NewClientListener implements ActionListener {
@@ -44,7 +45,7 @@ public class MainScreenController extends AbstractController{
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                new SearchClientController(view, model.getClients(), ViewMode.PREVIEW);
+                new SearchClientController(view, ViewMode.PREVIEW);
             } catch (Exception ex) {
                 showError(view, ex.getMessage(), MainScreenController.class.getName(), ex);
             }
@@ -56,7 +57,7 @@ public class MainScreenController extends AbstractController{
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                new SearchClientController(view, model.getClients(), ViewMode.EDIT);
+                new SearchClientController(view, ViewMode.EDIT);
             } catch (Exception ex) {
                 showError(view, ex.getMessage(), MainScreenController.class.getName(), ex);
             }
@@ -68,7 +69,19 @@ public class MainScreenController extends AbstractController{
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                new SearchClientController(view, model.getClients(), ViewMode.DELETE);
+                new SearchClientController(view, ViewMode.DELETE);
+            } catch (Exception ex) {
+                showError(view, ex.getMessage(), MainScreenController.class.getName(), ex);
+            }
+        }
+    }
+    
+    private class WoodProductPreviewListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                new SearchWoodProductController();
             } catch (Exception ex) {
                 showError(view, ex.getMessage(), MainScreenController.class.getName(), ex);
             }

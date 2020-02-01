@@ -58,5 +58,24 @@ public class ClientTableModel extends AbstractTableModel {
         this.list = clients; 
         fireTableDataChanged();
     }
+
+    @Override
+    public String getColumnName(int column) {
+        switch(column){
+            case 0:
+                return "ID";
+            case 1:
+                return "First name";
+            case 2:
+                return "Last name";
+            case 3:
+                return "Registration date";
+            case 4:
+                return "Client type";
+            default:
+                return "nothing";
+        }
+    }
+    
     
 }

@@ -29,11 +29,12 @@ public class SearchClientController extends AbstractController{
     ViewMode mode;
     private final List<Client> allClients;
     
-    public SearchClientController(Component comp, List<Client> clients, ViewMode mode) {
-        this.view = new FSearchClient(clients, mode);
+    public SearchClientController(Component comp, ViewMode mode) throws Exception {
         this.model = new SearchClientModel();
+        allClients = model.getClients();
+        this.view = new FSearchClient(allClients, mode);
+        
         this.mode = mode;
-        allClients = clients;
         
         view.setOnChangeListener(new OnChangeListener());
 
@@ -62,7 +63,7 @@ public class SearchClientController extends AbstractController{
 
         @Override
         public void removeUpdate(DocumentEvent e) {
-            view.getTableModel().setClients(allClients);
+            view.getTableModel().setClients(model.search(view.getTxtSearchCriteria().getText().trim(), allClients));
         }
 
         @Override

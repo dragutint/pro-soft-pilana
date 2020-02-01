@@ -25,14 +25,15 @@ public class ClientDaoImpl implements ClientDao {
     public List<IGeneralObject> find() throws Exception {
         Connection con = ConnectionFactory.getInstance().getConnection();
         
-        String query = "SELECT * FROM sawmill.client";
+        String query = new StringBuilder()
+                .append("SELECT * FROM sawmill.")
+                .append(new Client().getTableName())
+                .toString();
+        
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
-        Client c = new Client();
-        List<IGeneralObject> list = c.getList(rs);
-        
-        return list;
+        return new Client().getList(rs);
     }
 
     @Override

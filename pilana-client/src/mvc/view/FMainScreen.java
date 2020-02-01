@@ -50,7 +50,7 @@ public class FMainScreen extends javax.swing.JFrame {
 
         lblUser.setText("jLabel1");
 
-        btnPreviewClient.setText("View client");
+        btnPreviewClient.setText("Find client");
 
         btnEditClient.setText("Edit client");
 
@@ -145,5 +145,9 @@ public class FMainScreen extends javax.swing.JFrame {
     
     public void setDeleteClientListener(ActionListener listener){
         btnDeleteClient.addActionListener(listener);
+    }
+
+    public void setPreviewWoodProductListeer(ActionListener listener) {
+        btnFindWoodProduct.addActionListener(listener);
     }
 }

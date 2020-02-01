@@ -94,7 +94,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPreviewClient">
       <Properties>
-        <Property name="text" type="java.lang.String" value="View client"/>
+        <Property name="text" type="java.lang.String" value="Find client"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnEditClient">

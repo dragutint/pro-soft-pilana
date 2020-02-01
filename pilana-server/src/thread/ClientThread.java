@@ -82,6 +82,9 @@ public class ClientThread extends Thread {
                 case DELETE_CLIENT:
                     bl.controller.Controller.getInstance().deleteClient((Client)requestObject.getData());
                     msg = "Successfully deleted client"; break;
+                case FIND_WOOD_PRODUCTS:
+                    data = bl.controller.Controller.getInstance().findWoodProducts();
+                    msg = "Successfully found all wood products"; break;
                 default:
                     throw new Exception("Invalid operation");
             }            
