@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentListener;
-import mvc.ViewMode;
 import mvc.view.table.ClientTableModel;
 
 /**

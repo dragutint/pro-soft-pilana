@@ -5,6 +5,7 @@
  */
 package mvc.controller;
 
+import domain.Employee;
 import java.awt.Component;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +16,6 @@ import javax.swing.JOptionPane;
  * @author Dudat
  */
 public abstract class AbstractController {
-    
     public void showMessage(Component comp, String msg){
         JOptionPane.showMessageDialog(comp, msg, "Success", JOptionPane.INFORMATION_MESSAGE);
     }

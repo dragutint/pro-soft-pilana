@@ -5,7 +5,6 @@
  */
 package mvc.view.table;
 
-import domain.Client;
 import domain.WoodProduct;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -15,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
  * @author Dudat
  */
 public class WoodProductTableModel extends AbstractTableModel {
-    private List<WoodProduct> list; 
+    private List<WoodProduct> list;
 
     public WoodProductTableModel(List<WoodProduct> list) {
         this.list = list;
@@ -47,9 +46,9 @@ public class WoodProductTableModel extends AbstractTableModel {
     @Override
     public String getColumnName(int column) {
         if(column == 0){
-            return "ID";
+                return "ID";
         } else {
-            return "Name";
+                return "Name";
         }
     }
 
@@ -61,5 +60,5 @@ public class WoodProductTableModel extends AbstractTableModel {
     public WoodProduct getSelected(int selectedRow) {
         return list.get(selectedRow);
     }
-    
+
 }

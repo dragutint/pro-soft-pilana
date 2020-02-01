@@ -147,7 +147,11 @@ public class FMainScreen extends javax.swing.JFrame {
         btnDeleteClient.addActionListener(listener);
     }
 
-    public void setPreviewWoodProductListeer(ActionListener listener) {
+    public void setPreviewWoodProductListener(ActionListener listener) {
         btnFindWoodProduct.addActionListener(listener);
+    }
+
+    public void setNewInvoiceListener(ActionListener listener) {
+        btnNewInvoice.addActionListener(listener);
     }
 }

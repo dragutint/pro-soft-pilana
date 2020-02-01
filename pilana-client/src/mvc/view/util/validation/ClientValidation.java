@@ -6,10 +6,6 @@
 package mvc.view.util.validation;
 
 import domain.Client;
-import domain.ClientType;
-import java.util.Date;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
 
 /**
  *
@@ -18,7 +14,7 @@ import javax.swing.JTextField;
 public class ClientValidation extends AbstractValidation{
     
     public static void validate(Client client) throws Exception{
-        notEmpty("first name", client.getFirstName());
-        notEmpty("last name", client.getLastName());
+        notEmpty("First name", client.getFirstName());
+        notEmpty("Last name", client.getLastName());
     }
 }

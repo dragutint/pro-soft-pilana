@@ -19,7 +19,7 @@ import util.DOperation;
  */
 public class SearchWoodProductModel {
 
-    public List<WoodProduct> getWoodProducts() throws IOException, Exception {
+    public List<WoodProduct> findWoodProducts() throws IOException, Exception {
         ResponseObject response = (ResponseObject) ThreadController.getInstance().request(DOperation.FIND_WOOD_PRODUCTS, null);
         return (List<WoodProduct>) response.getData();
     }
@@ -28,7 +28,7 @@ public class SearchWoodProductModel {
         List<WoodProduct> searchResults = new ArrayList<>();
         
         for(WoodProduct wp : list){
-            if(wp.getName().toLowerCase().trim().contains(term.toLowerCase().trim())){
+            if(wp.getName().toLowerCase().trim().contains(term.toLowerCase().trim()) || wp.getId() == Integer.valueOf(term)){
                 searchResults.add(wp);
             }
         }

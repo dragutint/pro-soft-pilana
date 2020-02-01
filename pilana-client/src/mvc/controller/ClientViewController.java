@@ -6,7 +6,7 @@
 package mvc.controller;
 
 import domain.Client;
-import mvc.ViewMode;
+import mvc.view.ViewMode;
 import mvc.view.FClientView;
 
 /**

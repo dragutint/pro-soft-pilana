@@ -136,5 +136,9 @@ public class Client implements Serializable, IGeneralObject {
         
         return list;
     }    
-    
+
+    @Override
+    public String toString() {
+        return this.getId() + ", " + this.getFirstName() + this.getLastName();
+    }
 }

@@ -41,7 +41,7 @@ public class FSearchWoodProduct extends javax.swing.JFrame {
         tblWoodProducts = new javax.swing.JTable();
         btnShowWoodProduct = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tblWoodProducts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

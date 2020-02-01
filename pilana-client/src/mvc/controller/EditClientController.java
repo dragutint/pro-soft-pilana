@@ -8,7 +8,7 @@ package mvc.controller;
 import domain.Client;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import mvc.ViewMode;
+import mvc.view.ViewMode;
 import mvc.model.EditClientModel;
 import mvc.view.FClientView;
 import mvc.view.util.form_getter.ClientFormGetter;

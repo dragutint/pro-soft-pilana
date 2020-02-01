@@ -16,5 +16,6 @@ public enum DOperation {
     EDIT_CLIENT,
     DELETE_CLIENT,
     FIND_WOOD_PRODUCTS,
+    NEW_INVOICE,
     ;
 }

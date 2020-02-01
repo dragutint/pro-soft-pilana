@@ -5,12 +5,11 @@
  */
 package thread;
 
-import domain.Client;
+import domain.Employee;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.List;
 import javax.swing.JOptionPane;
 import transfer.RequestObject;
 import transfer.ResponseObject;
@@ -27,6 +26,7 @@ public class ThreadController {
     private Socket socket;
     private final ObjectOutputStream objectOutputStream;
     private final ObjectInputStream objectInputStream;
+    private Employee loggedEmployee;
 
     public static ThreadController getInstance() throws IOException {
         if (instance == null) {
@@ -39,7 +39,15 @@ public class ThreadController {
         socket = new Socket("localhost", 9050);
         objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         objectOutputStream.flush();
-        objectInputStream = new ObjectInputStream(socket.getInputStream());        
+        objectInputStream = new ObjectInputStream(socket.getInputStream());
+    }
+    
+    public void setLoggedEmployee(Employee emp){
+        this.loggedEmployee = emp;
+    }
+
+    public Employee getLoggedEmployee() {
+        return loggedEmployee;
     }
 
     public Socket getSocket() {

@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import mvc.ViewMode;
+import mvc.view.ViewMode;
 import mvc.model.SearchClientModel;
 import mvc.view.FSearchClient;
 import thread.ThreadController;
@@ -29,9 +29,9 @@ public class SearchClientController extends AbstractController{
     ViewMode mode;
     private final List<Client> allClients;
     
-    public SearchClientController(Component comp, ViewMode mode) throws Exception {
+    public SearchClientController(ViewMode mode) throws Exception {
         this.model = new SearchClientModel();
-        allClients = model.getClients();
+        allClients = model.findClients();
         this.view = new FSearchClient(allClients, mode);
         
         this.mode = mode;

@@ -25,7 +25,7 @@ public class NewClientController extends AbstractController{
     FNewClient view;
     NewClientModel model;
     
-    public NewClientController(Component comp, List<ClientType> clientTypes) {
+    public NewClientController(List<ClientType> clientTypes) {
         view = new FNewClient(clientTypes);
         model = new NewClientModel();
         

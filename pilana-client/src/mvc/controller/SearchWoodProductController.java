@@ -25,7 +25,7 @@ public class SearchWoodProductController extends AbstractController{
     
     public SearchWoodProductController() throws Exception {
         model = new SearchWoodProductModel();
-        allWoodProducts = model.getWoodProducts();
+        allWoodProducts = model.findWoodProducts();
         this.view = new FSearchWoodProduct(allWoodProducts);
         
         view.setShowWoodProductListener(new ShowWoodProductListener());

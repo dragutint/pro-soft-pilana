@@ -17,21 +17,19 @@ import java.util.List;
 public class InvoiceItem implements Serializable, IGeneralObject{
     private Integer invoiceId;
     private Integer ordinal;
-    private String measureUnit;
-    private Double amount;
+    private Integer amount;
     private WoodProduct woodProduct;
 
     public InvoiceItem() {
     }
 
-    public InvoiceItem(Integer invoiceId, Integer ordinal, String measureUnit, Double amount, WoodProduct woodProduct) {
+    public InvoiceItem(Integer invoiceId, Integer ordinal, Integer amount, WoodProduct woodProduct) {
         this.invoiceId = invoiceId;
         this.ordinal = ordinal;
-        this.measureUnit = measureUnit;
         this.amount = amount;
         this.woodProduct = woodProduct;
     }
-    
+
     public Integer getInvoiceId() {
         return invoiceId;
     }
@@ -48,19 +46,11 @@ public class InvoiceItem implements Serializable, IGeneralObject{
         this.ordinal = ordinal;
     }
 
-    public String getMeasureUnit() {
-        return measureUnit;
-    }
-
-    public void setMeasureUnit(String measureUnit) {
-        this.measureUnit = measureUnit;
-    }
-
-    public Double getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
@@ -79,7 +69,7 @@ public class InvoiceItem implements Serializable, IGeneralObject{
 
     @Override
     public String getColumnNamesForInsert() {
-        return "invoice_id, ordinal, measure_unit, amount, wood_product_id";
+        return "invoice_id, ordinal, amount, wood_product_id";
     }
 
     @Override
