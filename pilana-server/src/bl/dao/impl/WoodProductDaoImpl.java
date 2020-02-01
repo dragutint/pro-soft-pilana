@@ -10,6 +10,7 @@ import bl.dao.util.ConnectionFactory;
 import domain.IGeneralObject;
 import domain.WoodProduct;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
@@ -32,6 +33,27 @@ public class WoodProductDaoImpl implements WoodProductDao{
         ResultSet rs = stmt.executeQuery(query);
         
         return new WoodProduct().getList(rs);
+    }
+
+    @Override
+    public void updateBalance(WoodProduct woodProduct) throws Exception {
+        Connection con = ConnectionFactory.getInstance().getConnection();
+        
+        String upd = "UPDATE sawmill.wood_product SET balance = ?";
+        String update = new StringBuilder()
+                .append("SELECT * FROM sawmill.")
+                .append(woodProduct.getTableName())
+                .append(" SET balance = ")
+                .append(woodProduct.getBalance())
+                .append(" WHERE ")
+                .append(woodProduct.getObjectCase())
+                .toString();
+        
+        PreparedStatement ps = con.prepareStatement(update);
+        
+        if(ps.executeUpdate() < 1){
+            throw new Exception("System cannot update balance on wood product with id: " + woodProduct.getId());
+        }
     }
     
 }

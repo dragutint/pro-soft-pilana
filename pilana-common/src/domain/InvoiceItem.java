@@ -74,7 +74,15 @@ public class InvoiceItem implements Serializable, IGeneralObject{
 
     @Override
     public String getInsertValues() {
-        return "";
+        return new StringBuilder()
+                .append(this.getInvoiceId())
+                .append(", ")
+                .append(this.getOrdinal())
+                .append(", ")
+                .append(this.getAmount())
+                .append(", ")
+                .append(this.getWoodProduct().getId())
+                .toString();
     }
 
     @Override

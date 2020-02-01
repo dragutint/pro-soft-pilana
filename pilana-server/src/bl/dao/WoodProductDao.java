@@ -6,6 +6,7 @@
 package bl.dao;
 
 import domain.IGeneralObject;
+import domain.WoodProduct;
 import java.util.List;
 
 /**
@@ -15,5 +16,7 @@ import java.util.List;
 public interface WoodProductDao {
 
     public List<IGeneralObject> find() throws Exception;
+
+    public void updateBalance(WoodProduct woodProduct) throws Exception;
     
 }

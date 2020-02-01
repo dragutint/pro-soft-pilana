@@ -25,6 +25,7 @@ public class ConnectionFactory {
             String username = "root";
             String password = "";
             connection = DriverManager.getConnection(url, username, password);
+            connection.setAutoCommit(false);
         } catch (SQLException ex) {
             throw new SQLException("Connection is not created!");
         }

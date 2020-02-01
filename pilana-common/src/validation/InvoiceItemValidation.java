@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mvc.view.util.validation;
+package validation;
 
 import domain.InvoiceItem;
 
@@ -17,5 +17,6 @@ public class InvoiceItemValidation extends AbstractValidation {
         notNull("Wood product", item.getWoodProduct());
         notNull("Amount", item.getAmount());
         notLessThan("Amount", item.getAmount().doubleValue(), 1.0);
+        notGreaterThan("We dont have that much wood products, amount", item.getAmount().doubleValue(), item.getWoodProduct().getBalance().doubleValue());
     }
 }

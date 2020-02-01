@@ -9,7 +9,7 @@ import domain.InvoiceItem;
 import domain.WoodProduct;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import mvc.view.util.validation.InvoiceItemValidation;
+import validation.InvoiceItemValidation;
 
 /**
  *

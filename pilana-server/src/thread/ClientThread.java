@@ -5,12 +5,15 @@
  */
 package thread;
 
+import bl.dao.util.ConnectionFactory;
 import domain.Client;
 import domain.Employee;
+import domain.Invoice;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import transfer.RequestObject;
@@ -51,8 +54,10 @@ public class ClientThread extends Thread {
                 try {
                     objectOutputStream.writeObject(responseObject);
                 } catch (IOException ex1) {
-                    System.out.println(ex1.getMessage());
+                    Logger.getLogger(ClientThread.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            } catch (SQLException ex) {
+                Logger.getLogger(ClientThread.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -61,7 +66,7 @@ public class ClientThread extends Thread {
         return socket;
     }
 
-    private ResponseObject handleRequest(RequestObject requestObject) {
+    private ResponseObject handleRequest(RequestObject requestObject) throws SQLException {
         try {
             Object data = null;
             String msg = null;
@@ -85,11 +90,15 @@ public class ClientThread extends Thread {
                 case FIND_WOOD_PRODUCTS:
                     data = bl.controller.Controller.getInstance().findWoodProducts();
                     msg = "Successfully found all wood products"; break;
+                case NEW_INVOICE:
+                    data = (Invoice) bl.controller.Controller.getInstance().newInvoice((Invoice)requestObject.getData());
+                    msg = "Successfully saved new invoice, invoice id: " + ((Invoice)data).getId(); break;
                 default:
                     throw new Exception("Invalid operation");
             }            
             return new ResponseObject(DResponseStatus.SUCCESS, msg, data);
         } catch (Exception ex) {
+            ConnectionFactory.getInstance().getConnection().rollback();
             Logger.getLogger(ClientThread.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseObject(DResponseStatus.ERROR, ex.getMessage(), null);
         }

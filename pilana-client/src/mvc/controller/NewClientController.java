@@ -7,15 +7,14 @@ package mvc.controller;
 
 import domain.Client;
 import domain.ClientType;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import mvc.model.NewClientModel;
-import mvc.view.util.validation.ClientValidation;
 import mvc.view.FNewClient;
 import mvc.view.util.form_getter.ClientFormGetter;
 import transfer.ResponseObject;
+import validation.ClientValidation;
 
 /**
  *

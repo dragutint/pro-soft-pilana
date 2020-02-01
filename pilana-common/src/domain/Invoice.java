@@ -93,7 +93,7 @@ public class Invoice implements Serializable, IGeneralObject{
     @Override
     public String getInsertValues() {
         return new StringBuilder()
-                .append(this.getDateCreated())
+                .append("SYSDATE()")
                 .append(", '")
                 .append(this.getDescription())
                 .append("', ")

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mvc.view.util.validation;
+package validation;
 
 /**
  *
@@ -23,13 +23,13 @@ public abstract class AbstractValidation {
     
     protected static void notGreaterThan(String field, Double num, Double min) throws Exception{
         if(num > min){
-            throw new Exception(field + " cannot be less than " + min);
+            throw new Exception(field + " cannot be greater than " + min);
         }
     }
     
     protected static void notLessThan(String field, Double num, Double max) throws Exception {
         if (num < max) {
-            throw new Exception(field + " cannot be greater than " + max);
+            throw new Exception(field + " cannot be less than " + max);
         }
     }
 }
