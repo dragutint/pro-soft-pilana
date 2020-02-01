@@ -29,7 +29,7 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jScrollPane1" pref="375" max="32767" attributes="0"/>
                   <Component id="txtSearchCriteria" max="32767" attributes="0"/>
-                  <Component id="btnShowClient" max="32767" attributes="0"/>
+                  <Component id="btnAction" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="44" max="32767" attributes="0"/>
           </Group>
@@ -43,7 +43,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="275" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnShowClient" min="-2" max="-2" attributes="0"/>
+              <Component id="btnAction" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -73,7 +73,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnShowClient">
+    <Component class="javax.swing.JButton" name="btnAction">
       <Properties>
         <Property name="text" type="java.lang.String" value="Show client"/>
       </Properties>

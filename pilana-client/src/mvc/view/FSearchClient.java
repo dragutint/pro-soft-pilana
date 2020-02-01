@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentListener;
+import mvc.ViewMode;
 import mvc.view.table.ClientTableModel;
 
 /**
@@ -21,9 +22,9 @@ public class FSearchClient extends javax.swing.JFrame {
     /**
      * Creates new form FSearchClient
      */
-    public FSearchClient(List<Client> clients) {
+    public FSearchClient(List<Client> clients, ViewMode mode) {
         initComponents();
-        tblClients.setModel(new ClientTableModel(clients));
+        prepareForm(clients, mode);
     }
 
     /**
@@ -38,7 +39,7 @@ public class FSearchClient extends javax.swing.JFrame {
         txtSearchCriteria = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblClients = new javax.swing.JTable();
-        btnShowClient = new javax.swing.JButton();
+        btnAction = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -56,7 +57,7 @@ public class FSearchClient extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblClients);
 
-        btnShowClient.setText("Show client");
+        btnAction.setText("Show client");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,7 +68,7 @@ public class FSearchClient extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
                     .addComponent(txtSearchCriteria)
-                    .addComponent(btnShowClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -78,7 +79,7 @@ public class FSearchClient extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnShowClient)
+                .addComponent(btnAction)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -87,14 +88,14 @@ public class FSearchClient extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnShowClient;
+    private javax.swing.JButton btnAction;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblClients;
     private javax.swing.JTextField txtSearchCriteria;
     // End of variables declaration//GEN-END:variables
 
-    public void setShowClientListener(ActionListener listener) {
-        btnShowClient.addActionListener(listener);
+    public void setActionButtonListener(ActionListener listener) {
+        btnAction.addActionListener(listener);
     }
     
     public void setOnChangeListener(DocumentListener listener){
@@ -111,5 +112,22 @@ public class FSearchClient extends javax.swing.JFrame {
     
     public int getSelectedRow(){
         return tblClients.getSelectedRow();
+    }
+
+    private void prepareForm(List<Client> clients, ViewMode mode) {
+        tblClients.setModel(new ClientTableModel(clients));
+        switch (mode){
+            case PREVIEW:
+                btnAction.setText("Show client");
+                break;
+                
+            case EDIT:
+                btnAction.setText("Edit client");
+                break;
+                
+            case DELETE:
+                btnAction.setText("Delete client");
+                break;
+        }
     }
 }

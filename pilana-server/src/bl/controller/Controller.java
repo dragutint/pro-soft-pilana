@@ -45,4 +45,12 @@ public class Controller {
     public List<IGeneralObject> findClients() throws Exception {
         return clientService.find();
     }
+
+    public void editClient(Client client) throws Exception{
+        clientService.edit(client);
+    }
+
+    public void deleteClient(Client client) throws Exception{
+        clientService.delete(client);
+    }
 }

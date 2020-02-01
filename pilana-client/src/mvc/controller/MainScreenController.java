@@ -8,26 +8,27 @@ package mvc.controller;
 import domain.Employee;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import mvc.view.FClient;
+import mvc.ViewMode;
+import mvc.view.FMainScreen;
 import mvc.model.ClientModel;
 
 /**
  *
  * @author Dudat
  */
-public class ClientController extends AbstractController{
-    FClient view; 
+public class MainScreenController extends AbstractController{
+    FMainScreen view; 
     ClientModel model;
    
-    public ClientController(Employee emp) {
-        view = new FClient(emp);
+    public MainScreenController(Employee emp) {
+        view = new FMainScreen(emp);
         model = new ClientModel();
         
         view.setVisible(true);
         view.setNewClientListener(new NewClientListener());
-        view.setSearchClientListener(new SearchClientListener());
+        view.setPreviewClientListener(new ClientPreviewListener());
+        view.setEditClientListener(new EditClientListener());
+        view.setDeleteClientListener(new DeleteClientListener());
     }
     
     private class NewClientListener implements ActionListener {
@@ -38,14 +39,38 @@ public class ClientController extends AbstractController{
         }
     }
     
-    private class SearchClientListener implements ActionListener {
+    private class ClientPreviewListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                new SearchClientController(view, model.getClients());
+                new SearchClientController(view, model.getClients(), ViewMode.PREVIEW);
             } catch (Exception ex) {
-                showError(view, ex.getMessage(), ClientController.class.getName(), ex);
+                showError(view, ex.getMessage(), MainScreenController.class.getName(), ex);
+            }
+        }
+    }
+    
+    private class EditClientListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                new SearchClientController(view, model.getClients(), ViewMode.EDIT);
+            } catch (Exception ex) {
+                showError(view, ex.getMessage(), MainScreenController.class.getName(), ex);
+            }
+        }
+    }
+    
+    private class DeleteClientListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                new SearchClientController(view, model.getClients(), ViewMode.DELETE);
+            } catch (Exception ex) {
+                showError(view, ex.getMessage(), MainScreenController.class.getName(), ex);
             }
         }
     }

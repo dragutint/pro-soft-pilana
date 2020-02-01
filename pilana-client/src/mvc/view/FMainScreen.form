@@ -31,7 +31,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnNewClient" max="32767" attributes="0"/>
-                  <Component id="btnSearchClient" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnPreviewClient" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnEditClient" max="32767" attributes="0"/>
                   <Component id="btnDeleteClient" pref="174" max="32767" attributes="0"/>
               </Group>
@@ -61,7 +61,7 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnSearchClient" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPreviewClient" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnNewInvoice" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -92,9 +92,9 @@
         <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSearchClient">
+    <Component class="javax.swing.JButton" name="btnPreviewClient">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Search clients"/>
+        <Property name="text" type="java.lang.String" value="View client"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnEditClient">

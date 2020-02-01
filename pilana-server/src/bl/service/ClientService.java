@@ -18,5 +18,9 @@ public interface ClientService {
     public List<IGeneralObject> find() throws Exception;
 
     public Client add(Client client) throws Exception;
+
+    public void edit(Client client) throws Exception;
+
+    public void delete(Client client) throws Exception;
     
 }

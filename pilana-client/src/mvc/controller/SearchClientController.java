@@ -12,8 +12,12 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import mvc.ViewMode;
 import mvc.model.SearchClientModel;
 import mvc.view.FSearchClient;
+import thread.ThreadController;
+import transfer.ResponseObject;
+import util.DOperation;
 
 /**
  *
@@ -22,17 +26,31 @@ import mvc.view.FSearchClient;
 public class SearchClientController extends AbstractController{
     FSearchClient view;
     SearchClientModel model;
+    ViewMode mode;
     private final List<Client> allClients;
     
-    public SearchClientController(Component comp, List<Client> clients) {
-        view = new FSearchClient(clients);
-        model = new SearchClientModel();
-        
+    public SearchClientController(Component comp, List<Client> clients, ViewMode mode) {
+        this.view = new FSearchClient(clients, mode);
+        this.model = new SearchClientModel();
+        this.mode = mode;
         allClients = clients;
         
-        view.setVisible(true);
-        view.setShowClientListener(new ShowClientListener());
         view.setOnChangeListener(new OnChangeListener());
+
+        switch (mode){
+            case PREVIEW:
+                view.setActionButtonListener(new ShowClientListener());
+                break;
+
+            case EDIT:
+                view.setActionButtonListener(new EditClientListener());
+                break;
+
+            case DELETE:
+                view.setActionButtonListener(new DeleteClientListener());
+                break;
+        }
+        view.setVisible(true);
     }
     
     private class OnChangeListener implements DocumentListener{
@@ -58,8 +76,34 @@ public class SearchClientController extends AbstractController{
         @Override
         public void actionPerformed(ActionEvent e) {
             Client selectedClient = view.getTableModel().getSelected(view.getSelectedRow());
-            new ClientPreviewController(selectedClient);
+            new ClientViewController(selectedClient, mode);
+            view.dispose();
         }
     }
     
+    private class EditClientListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Client selectedClient = view.getTableModel().getSelected(view.getSelectedRow());
+            new EditClientController(selectedClient);
+            view.dispose();
+        }
+    }
+    
+    private class DeleteClientListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                Client selectedClient = view.getTableModel().getSelected(view.getSelectedRow());
+                ResponseObject response = (ResponseObject) ThreadController.getInstance().request(DOperation.DELETE_CLIENT, selectedClient);
+                showMessage(view, response.getMessage());
+                view.dispose();
+            } catch (Exception ex) {
+                showError(view, ex.getMessage(), SearchClientController.class.getName(), ex);
+                view.dispose();
+            }
+        }
+    }
 }

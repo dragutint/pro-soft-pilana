@@ -15,17 +15,10 @@ import javax.swing.JTextField;
  *
  * @author Dudat
  */
-public class NewClientValidation extends AbstractValidation{
+public class ClientValidation extends AbstractValidation{
     
-    public static Client getFormClient(JTextField firstName, JTextField lastName, JComboBox clientType) throws Exception{
-        notEmpty("first name", firstName.getText().trim());
-        notEmpty("last name", lastName.getText().trim());
-        
-        return new Client(
-                null,
-                firstName.getText().trim(),
-                lastName.getText().trim(),
-                new Date(System.currentTimeMillis()),
-                (ClientType) clientType.getSelectedItem());
+    public static void validate(Client client) throws Exception{
+        notEmpty("first name", client.getFirstName());
+        notEmpty("last name", client.getLastName());
     }
 }

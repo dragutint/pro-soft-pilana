@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.JOptionPane;
 import mvc.model.LoginModel;
 import transfer.ResponseObject;
 
@@ -58,7 +57,7 @@ public class LoginController extends AbstractController{
             try {
                 ResponseObject response = model.login(username, password);
                 
-                new ClientController((Employee) response.getData());
+                new MainScreenController((Employee) response.getData());
                 view.dispose();
                 
                 showMessage(view, response.getMessage());

@@ -15,10 +15,10 @@ import util.DOperation;
  *
  * @author Dudat
  */
-public class NewClientModel {
+public class EditClientModel extends AbstractModel {
 
-    public ResponseObject addNewClient(Client newClient) throws IOException, Exception {
-        return (ResponseObject) ThreadController.getInstance().request(DOperation.ADD_NEW_CLIENT, newClient);
+    public ResponseObject editClient(Client newClient) throws IOException, Exception {
+        return (ResponseObject) ThreadController.getInstance().request(DOperation.EDIT_CLIENT, newClient);
     }
     
 }

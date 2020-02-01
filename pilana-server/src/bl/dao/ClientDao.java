@@ -18,5 +18,9 @@ public interface ClientDao {
     public List<IGeneralObject> find() throws Exception;
 
     public Client add(Client client) throws Exception;
+
+    public void update(Client client) throws Exception;
+
+    public void delete(Client client) throws Exception;
     
 }

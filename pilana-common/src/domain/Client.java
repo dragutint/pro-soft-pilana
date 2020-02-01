@@ -73,7 +73,7 @@ public class Client implements Serializable, IGeneralObject {
     }
     
     public int getId() {
-        return id;
+        return this.id;
     }
 
     @Override
@@ -94,7 +94,7 @@ public class Client implements Serializable, IGeneralObject {
                 .append("', '")
                 .append(this.lastName)
                 .append("', ")
-                .append(this.registrationDate)
+                .append("SYSDATE()")
                 .append(", ")
                 .append(this.clientType.getId())
                 .toString();

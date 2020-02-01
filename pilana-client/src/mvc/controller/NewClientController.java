@@ -12,8 +12,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import mvc.model.NewClientModel;
-import mvc.view.validation.NewClientValidation;
+import mvc.view.validation.ClientValidation;
 import mvc.view.FNewClient;
+import mvc.view.util.FormHelper;
 import transfer.ResponseObject;
 
 /**
@@ -38,7 +39,8 @@ public class NewClientController extends AbstractController{
         @Override
         public void actionPerformed(ActionEvent e) {        
             try {
-                Client newClient = NewClientValidation.getFormClient(view.getTxtFirstName(), view.getTxtLastName(), view.getCmbClientType());
+                Client newClient = FormHelper.getFormClient(null, view.getTxtFirstName(), view.getTxtLastName(), null, view.getCmbClientType());
+                ClientValidation.validate(newClient);
                 ResponseObject response = model.addNewClient(newClient);
                 showMessage(view, response.getMessage());
             } catch (Exception ex) {

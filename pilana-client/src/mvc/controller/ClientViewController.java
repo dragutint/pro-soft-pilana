@@ -6,17 +6,24 @@
 package mvc.controller;
 
 import domain.Client;
-import mvc.view.FClientPreview;
+import mvc.ViewMode;
+import mvc.view.FClientView;
 
 /**
  *
  * @author Dudat
  */
-public class ClientPreviewController extends AbstractController {
-    FClientPreview view;
+public class ClientViewController extends AbstractController {
+    FClientView view;
+    ViewMode mode;
     
-    public ClientPreviewController(Client selectedClient) {
-        view = new FClientPreview(selectedClient);
+    public ClientViewController(Client selectedClient, ViewMode mode) {
+        this.mode = mode;
+        this.view = new FClientView(selectedClient, mode);
+        
+        if(mode.equals(ViewMode.EDIT)){
+            // set action listener for button
+        }
         
         view.setVisible(true);
     }

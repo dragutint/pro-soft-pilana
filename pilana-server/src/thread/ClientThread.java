@@ -75,7 +75,13 @@ public class ClientThread extends Thread {
                     msg = "Successfully added new Client. Generated ID: " + ((Client)data).getId(); break;
                 case FIND_CLIENTS:
                     data = bl.controller.Controller.getInstance().findClients();
-                    msg = "Succesfully found all clients."; break;
+                    msg = "Successfully found all clients."; break;
+                case EDIT_CLIENT:
+                    bl.controller.Controller.getInstance().editClient((Client)requestObject.getData());
+                    msg = "Successfully edited client"; break;
+                case DELETE_CLIENT:
+                    bl.controller.Controller.getInstance().deleteClient((Client)requestObject.getData());
+                    msg = "Successfully deleted client"; break;
                 default:
                     throw new Exception("Invalid operation");
             }            

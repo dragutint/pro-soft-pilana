@@ -32,5 +32,18 @@ public class ClientServiceImpl implements ClientService{
     public Client add(Client client) throws Exception {
         return clientDao.add(client);
     }
+
+    @Override
+    public void edit(Client client) throws Exception {
+        // validations
+        
+        clientDao.update(client);
+    }
+
+    @Override
+    public void delete(Client client) throws Exception {
+        // validations if needed
+        clientDao.delete(client);
+    }
     
 }
