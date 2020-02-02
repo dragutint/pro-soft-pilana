@@ -148,4 +148,9 @@ public class Invoice implements Serializable, IGeneralObject{
         }
         return result;
     }
+
+    @Override
+    public String getUpdateValues() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

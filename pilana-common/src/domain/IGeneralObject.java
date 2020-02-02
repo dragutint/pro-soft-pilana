@@ -18,5 +18,7 @@ public interface IGeneralObject extends Serializable {
     public IGeneralObject getObject(ResultSet rs) throws SQLException;
     public String getObjectCase();
     public List<IGeneralObject> getList(ResultSet rs) throws SQLException;
+    public Integer getId();
+    public String getUpdateValues();
 
 }

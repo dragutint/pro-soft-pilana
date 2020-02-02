@@ -126,6 +126,13 @@ public class WoodProduct implements Serializable, IGeneralObject{
         
         return list;
     }
-    
-    
+
+    @Override
+    public String getUpdateValues() {
+        return new StringBuilder()
+                .append("name = '").append(this.getName()).append("', ")
+                .append("price = ").append(this.getPrice()).append(", ")
+                .append("balance = ").append(this.getBalance())
+                .toString();
+    }
 }

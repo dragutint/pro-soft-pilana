@@ -17,7 +17,6 @@ import java.net.SocketException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import sun.net.ConnectionResetException;
 import transfer.RequestObject;
 import transfer.ResponseObject;
 import util.DResponseStatus;

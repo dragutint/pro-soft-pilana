@@ -72,7 +72,8 @@ public class Client implements Serializable, IGeneralObject {
         this.clientType = clientType;
     }
     
-    public int getId() {
+    @Override
+    public Integer getId() {
         return this.id;
     }
 
@@ -145,4 +146,15 @@ public class Client implements Serializable, IGeneralObject {
     public String toString() {
         return this.getFirstName() + " " + this.getLastName();
     }
+
+    @Override
+    public String getUpdateValues() {
+        return new StringBuilder()
+                .append("first_name = '").append(this.getFirstName()).append("', ")
+                .append("last_name = '").append(this.getLastName()).append("', ")
+                .append("client_type_id = ").append(this.getClientType().getId())
+                .toString();
+    }
+
+
 }

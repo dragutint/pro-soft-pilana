@@ -21,11 +21,11 @@ public class ConnectionFactory {
 
     private ConnectionFactory() throws SQLException {
         try {
-            String url = PropertyReader.getInstance().getProperty("url");
-            String username = PropertyReader.getInstance().getProperty("user");
-            String password = PropertyReader.getInstance().getProperty("pass");
+            String url = PropertyReader.getInstance().getProperty("db.url");
+            String username = PropertyReader.getInstance().getProperty("db.user");
+            String password = PropertyReader.getInstance().getProperty("db.pass");
             connection = DriverManager.getConnection(url, username, password);
-            connection.setAutoCommit(Boolean.valueOf(PropertyReader.getInstance().getProperty("autocommit"))); 
+            connection.setAutoCommit(Boolean.valueOf(PropertyReader.getInstance().getProperty("db.autocommit"))); 
         } catch (SQLException ex) {
             throw new SQLException("Connection is not created!");
         }

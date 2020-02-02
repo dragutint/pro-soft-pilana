@@ -119,4 +119,14 @@ public class InvoiceItem implements Serializable, IGeneralObject{
         }
         return list;
     }
+
+    @Override
+    public Integer getId() {
+        return this.getId();
+    }
+
+    @Override
+    public String getUpdateValues() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

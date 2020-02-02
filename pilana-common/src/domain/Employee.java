@@ -121,11 +121,16 @@ public class Employee implements Serializable, IGeneralObject{
 
     @Override
     public String getObjectCase() {
-        return "id = " + this.getId();
+        return "id = " + this.getId() + " OR username = '" + this.getUsername() + "'";
     }
 
     @Override
     public List<IGeneralObject> getList(ResultSet rs) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getUpdateValues() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

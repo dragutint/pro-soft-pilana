@@ -5,18 +5,18 @@
  */
 package bl.controller;
 
-import bl.service.ClientService;
-import bl.service.InvoiceService;
 import domain.Employee;
-import bl.service.EmployeeService;
-import bl.service.WoodProductService;
-import bl.service.impl.ClientServiceImpl;
-import bl.service.impl.InvoiceServiceImpl;
-import bl.service.impl.EmployeeServiceImpl;
-import bl.service.impl.WoodProductServiceImpl;
+import bl.service.so.impl.SOFindInvoices;
+import bl.service.so.impl.SODeleteClient;
+import bl.service.so.impl.SOSimpleFind;
+import bl.service.so.impl.SOUpdateClient;
+import bl.service.so.impl.SOLogin;
+import bl.service.so.impl.SOSaveClient;
+import bl.service.so.impl.SOSaveInvoice;
 import domain.Client;
 import domain.IGeneralObject;
 import domain.Invoice;
+import domain.WoodProduct;
 import java.util.List;
 
 /**
@@ -25,16 +25,8 @@ import java.util.List;
  */
 public class Controller {
     private static Controller instance;
-    private final EmployeeService userService;
-    private final ClientService clientService;
-    private final WoodProductService woodProductService;
-    private final InvoiceService invoiceService;
     
     private Controller(){
-        userService = new EmployeeServiceImpl();
-        clientService = new ClientServiceImpl();
-        woodProductService = new WoodProductServiceImpl();
-        invoiceService = new InvoiceServiceImpl();
     }
     
     public static Controller getInstance(){
@@ -44,34 +36,34 @@ public class Controller {
     }
 
     public Employee login(Employee employee) throws Exception {
-        return userService.login(employee);
+        return (Employee) new SOLogin().execute(employee);
     }
 
     public Client addNewClient(Client client) throws Exception{
-        return clientService.add(client);
+        return (Client) new SOSaveClient().execute(client);
     }
 
     public List<IGeneralObject> findClients() throws Exception {
-        return clientService.find();
+        return (List<IGeneralObject>) new SOSimpleFind().execute(new Client());
     }
 
     public void editClient(Client client) throws Exception{
-        clientService.edit(client);
+        new SOUpdateClient().execute(client);
     }
 
     public void deleteClient(Client client) throws Exception{
-        clientService.delete(client);
+        new SODeleteClient().execute(client);
     }
 
     public List<IGeneralObject> findWoodProducts() throws Exception{
-        return woodProductService.find();
+        return (List<IGeneralObject>) new SOSimpleFind().execute(new WoodProduct());
     }
     
     public Invoice newInvoice(Invoice invoice) throws Exception{
-        return invoiceService.addNewInvoice(invoice);
+        return (Invoice) new SOSaveInvoice().execute(invoice);
     }
 
     public List<Invoice> findInvoices() throws Exception{
-        return invoiceService.find();
+        return (List<Invoice>) new SOFindInvoices().execute(new Invoice());
     }
 }
