@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import javax.swing.JOptionPane;
+import java.net.SocketException;
 import transfer.RequestObject;
 import transfer.ResponseObject;
 import util.DOperation;
@@ -78,16 +78,18 @@ public class ThreadController {
         requestObject.setOperation(operation);
         requestObject.setData(object);
 
-        objectOutputStream.reset();
-        objectOutputStream.writeUnshared(requestObject);
-        objectOutputStream.flush();
-
-        ResponseObject responseObject = (ResponseObject) objectInputStream.readObject();
-
-        if (responseObject.getStatus() == DResponseStatus.SUCCESS) {
-            return responseObject;
-        } else {
-            throw new Exception(responseObject.getMessage());
+        try {
+            objectOutputStream.reset();
+            objectOutputStream.writeUnshared(requestObject);
+            objectOutputStream.flush();            
+            ResponseObject responseObject = (ResponseObject) objectInputStream.readObject();
+            if (responseObject.getStatus() == DResponseStatus.SUCCESS) {
+                return responseObject;
+            } else {
+                throw new Exception(responseObject.getMessage());
+            }
+        } catch (SocketException ex){
+            throw new Exception("Server is closed");
         }
     }
 }

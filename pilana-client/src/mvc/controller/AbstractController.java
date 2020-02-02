@@ -6,6 +6,8 @@
 package mvc.controller;
 
 import java.awt.Component;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +20,7 @@ public abstract class AbstractController {
     }
     
     public void showError(Component comp, String msg, String className, Exception ex){
+        Logger.getLogger(msg).log(Level.SEVERE, null, ex);
         JOptionPane.showMessageDialog(comp, msg, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
