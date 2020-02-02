@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.net.ConnectException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mvc.model.LoginModel;
 import mvc.view.util.form_validation.LoginFormValidation;
 import transfer.ResponseObject;
@@ -64,7 +67,10 @@ public class LoginController extends AbstractController{
                 view.dispose();
                 
                 showMessage(view, response.getMessage());
+            } catch (ConnectException ex) {
+                showError(view, "Server is not started", LoginController.class.getName(), ex);
             } catch (Exception ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                 showError(view, ex.getMessage(), LoginController.class.getName(), ex);
             }
         }
