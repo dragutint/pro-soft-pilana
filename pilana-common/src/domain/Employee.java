@@ -6,12 +6,15 @@
 package domain;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
  * @author Dudat
  */
-public class Employee implements Serializable{
+public class Employee implements Serializable, IGeneralObject{
     private Integer id;
     private String firstName;
     private String lastName;
@@ -80,7 +83,50 @@ public class Employee implements Serializable{
 
     @Override
     public String toString() {
-        return this.firstName + " " + this.lastName + ", username: " + this.username;
+        return this.firstName + " " + this.lastName;
+    }
+
+    @Override
+    public String getTableName() {
+        return "employee";
+    }
+
+    @Override
+    public String getColumnNamesForInsert() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getInsertValues() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setId(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public IGeneralObject getObject(ResultSet rs) throws SQLException {
+        if(rs.next())
+            return new Employee(
+                    rs.getInt("id"),
+                    rs.getString("first_name"),
+                    rs.getString("last_name"),
+                    rs.getString("username"),
+                    rs.getString("password")
+            );
+        throw new SQLException("No employee to return");
+    }
+
+    @Override
+    public String getObjectCase() {
+        return "id = " + this.getId();
+    }
+
+    @Override
+    public List<IGeneralObject> getList(ResultSet rs) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

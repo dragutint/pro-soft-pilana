@@ -21,7 +21,6 @@ public abstract class AbstractController {
     }
     
     public void showError(Component comp, String msg, String className, Exception ex){
-        Logger.getLogger(className).log(Level.SEVERE, null, ex);
         JOptionPane.showMessageDialog(comp, msg, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }

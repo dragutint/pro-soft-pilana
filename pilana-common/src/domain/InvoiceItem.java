@@ -8,6 +8,7 @@ package domain;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +24,10 @@ public class InvoiceItem implements Serializable, IGeneralObject{
     public InvoiceItem() {
     }
 
+    public InvoiceItem(Integer invoiceId) {
+        this.invoiceId = invoiceId;
+    }
+    
     public InvoiceItem(Integer invoiceId, Integer ordinal, Integer amount, WoodProduct woodProduct) {
         this.invoiceId = invoiceId;
         this.ordinal = ordinal;
@@ -97,11 +102,21 @@ public class InvoiceItem implements Serializable, IGeneralObject{
 
     @Override
     public String getObjectCase() {
-        return "invoice_id = " + this.getInvoiceId() + " AND " + "ordinal = " + this.getOrdinal();
+        return "invoice_id = " + this.getInvoiceId();
     }
 
     @Override
     public List<IGeneralObject> getList(ResultSet rs) throws SQLException {
-        return null;
+        List<IGeneralObject> list = new ArrayList<>();
+        while(rs.next()){
+            list.add(new InvoiceItem(
+                            rs.getInt("invoice_id"),
+                            rs.getInt("ordinal"),
+                            rs.getInt("amount"),
+                            new WoodProduct(rs.getInt("wood_product_id"))
+                    )
+            );
+        }
+        return list;
     }
 }

@@ -209,7 +209,7 @@ public class FNewInvoice extends javax.swing.JFrame {
 
     private void prepareForm(List<WoodProduct> woodProducts, List<Client> clients) {
         tblWoodProducts.setModel(new WoodProductTableModel(woodProducts));
-        tblInvoiceItems.setModel(new InvoiceItemTableModel(new ArrayList<InvoiceItem>()));
+        tblInvoiceItems.setModel(new InvoiceItemTableModel(new ArrayList<InvoiceItem>(), false));
         cmbClients.removeAllItems();
         
         for(Client c : clients){

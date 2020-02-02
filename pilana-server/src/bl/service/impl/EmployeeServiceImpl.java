@@ -5,27 +5,27 @@
  */
 package bl.service.impl;
 
-import bl.dao.UserDao;
-import bl.dao.impl.UserDaoImpl;
+import bl.dao.EmployeeDao;
+import bl.dao.impl.EmployeeDaoImpl;
 import domain.Employee;
-import bl.service.UserService;
-import bl.service.util.validation.UserValidation;
+import bl.service.EmployeeService;
+import bl.service.util.validation.EmployeeValidation;
 
 /**
  *
  * @author Dudat
  */
-public class UserServiceImpl implements UserService {
-    private UserDao userDao;
+public class EmployeeServiceImpl implements EmployeeService {
+    private EmployeeDao userDao;
 
-    public UserServiceImpl() {
-        this.userDao = new UserDaoImpl();
+    public EmployeeServiceImpl() {
+        this.userDao = new EmployeeDaoImpl();
     }
     
     @Override
     public Employee login(Employee employee) throws Exception{
         Employee expected = userDao.get(employee.getUsername());
-        UserValidation.validate(expected, employee);
+        EmployeeValidation.validate(expected, employee);
         return expected;
     }
     

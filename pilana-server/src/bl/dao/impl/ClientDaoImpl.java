@@ -93,5 +93,20 @@ public class ClientDaoImpl implements ClientDao {
             throw new Exception("System cannot delete client");
         }
     }
+
+    @Override
+    public Client get(int id) throws Exception {
+        Connection con = ConnectionFactory.getInstance().getConnection();
+        String query = new StringBuilder()
+                .append("SELECT * FROM sawmill.")
+                .append(new Client().getTableName())
+                .append(" WHERE ")
+                .append(new Client(id).getObjectCase())
+                .toString();
+        
+        Statement stmt = con.createStatement();
+        
+        return (Client) new Client().getObject(stmt.executeQuery(query));
+    }
     
 }

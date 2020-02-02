@@ -24,6 +24,10 @@ public class WoodProduct implements Serializable, IGeneralObject{
     public WoodProduct() {
     }
 
+    public WoodProduct(Integer id) {
+        this.id = id;
+    }
+    
     public WoodProduct(Integer id, String name, Double price, Integer balance) {
         this.id = id;
         this.name = name;
@@ -92,14 +96,14 @@ public class WoodProduct implements Serializable, IGeneralObject{
 
     @Override
     public IGeneralObject getObject(ResultSet rs) throws SQLException {
-        WoodProduct wp = new WoodProduct();
-        
-        wp.setId(rs.getInt("id"));
-        wp.setName(rs.getString("name"));
-        wp.setPrice(rs.getDouble("price"));
-        wp.setBalance(rs.getInt("balance"));
-        
-        return wp;
+        if(rs.next())
+            return new WoodProduct(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getDouble("price"),
+                    rs.getInt("balance")
+            );
+        throw new SQLException("No wood product in result set");
     }
 
     @Override
@@ -112,14 +116,12 @@ public class WoodProduct implements Serializable, IGeneralObject{
         List<IGeneralObject> list = new ArrayList<>();
         
         while(rs.next()){
-            WoodProduct wp = new WoodProduct();
-
-            wp.setId(rs.getInt("id"));
-            wp.setName(rs.getString("name"));
-            wp.setPrice(rs.getDouble("price"));
-            wp.setBalance(rs.getInt("balance"));
-            
-            list.add(wp);
+            list.add(new WoodProduct(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getDouble("price"),
+                    rs.getInt("balance")
+            ));
         }
         
         return list;

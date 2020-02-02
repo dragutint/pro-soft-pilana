@@ -8,11 +8,11 @@ package bl.controller;
 import bl.service.ClientService;
 import bl.service.InvoiceService;
 import domain.Employee;
-import bl.service.UserService;
+import bl.service.EmployeeService;
 import bl.service.WoodProductService;
 import bl.service.impl.ClientServiceImpl;
 import bl.service.impl.InvoiceServiceImpl;
-import bl.service.impl.UserServiceImpl;
+import bl.service.impl.EmployeeServiceImpl;
 import bl.service.impl.WoodProductServiceImpl;
 import domain.Client;
 import domain.IGeneralObject;
@@ -25,13 +25,13 @@ import java.util.List;
  */
 public class Controller {
     private static Controller instance;
-    private final UserService userService;
+    private final EmployeeService userService;
     private final ClientService clientService;
     private final WoodProductService woodProductService;
     private final InvoiceService invoiceService;
     
     private Controller(){
-        userService = new UserServiceImpl();
+        userService = new EmployeeServiceImpl();
         clientService = new ClientServiceImpl();
         woodProductService = new WoodProductServiceImpl();
         invoiceService = new InvoiceServiceImpl();
@@ -69,5 +69,9 @@ public class Controller {
     
     public Invoice newInvoice(Invoice invoice) throws Exception{
         return invoiceService.addNewInvoice(invoice);
+    }
+
+    public List<Invoice> findInvoices() throws Exception{
+        return invoiceService.find();
     }
 }

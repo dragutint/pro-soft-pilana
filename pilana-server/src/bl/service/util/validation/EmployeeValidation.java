@@ -12,7 +12,7 @@ import domain.Employee;
  *
  * @author Dudat
  */
-public class UserValidation extends AbstractValidation {
+public class EmployeeValidation extends AbstractValidation {
     public static void validate(Employee expected, Employee actual) throws Exception {
         notNull("User doesnt exists", expected);
         notEquals("Wrong password", expected.getPassword().trim(), actual.getPassword().trim());

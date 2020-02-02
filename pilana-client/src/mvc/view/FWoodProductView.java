@@ -11,12 +11,12 @@ import domain.WoodProduct;
  *
  * @author Dudat
  */
-public class FWoodProduct extends javax.swing.JFrame {
+public class FWoodProductView extends javax.swing.JFrame {
 
     /**
      * Creates new form FWoodProduct
      */
-    public FWoodProduct(WoodProduct wp) {
+    public FWoodProductView(WoodProduct wp) {
         initComponents();
         prepareForm(wp);
     }

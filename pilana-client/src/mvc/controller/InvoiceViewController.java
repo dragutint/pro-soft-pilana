@@ -5,18 +5,18 @@
  */
 package mvc.controller;
 
-import domain.WoodProduct;
-import mvc.view.FWoodProductView;
+import domain.Invoice;
+import mvc.view.FInvoiceView;
 
 /**
  *
  * @author Dudat
  */
-public class WoodProductViewController {
-    FWoodProductView view;
+public class InvoiceViewController extends AbstractController {
+    FInvoiceView view;
     
-    public WoodProductViewController(WoodProduct woodProduct) {
-        view = new FWoodProductView(woodProduct);
+    public InvoiceViewController(Invoice invoice) {
+        this.view = new FInvoiceView(invoice);
         
         view.setVisible(true);
     }

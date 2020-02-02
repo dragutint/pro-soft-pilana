@@ -107,12 +107,16 @@ public class Client implements Serializable, IGeneralObject {
 
     @Override
     public IGeneralObject getObject(ResultSet rs) throws SQLException {
-        Client c = new Client();
-        c.setId(rs.getInt("id"));
-        c.setFirstName(rs.getString("first_name"));
-        c.setLastName(rs.getString("last_name"));
-        c.setRegistrationDate(rs.getDate("registration_date"));
-        return c;
+        if(rs.next()){
+            return new Client(
+                    rs.getInt("id"),
+                    rs.getString("first_name"),
+                    rs.getString("last_name"),
+                    rs.getDate("registration_date"),
+                    ClientType.getById(rs.getInt("client_type_id"))
+            );
+        }
+        throw new SQLException("No client in result set");
     }
 
     @Override
@@ -125,13 +129,13 @@ public class Client implements Serializable, IGeneralObject {
         List<IGeneralObject> list = new ArrayList<>();
         
         while(rs.next()){
-            Client c = new Client();
-            c.setId(rs.getInt("id"));
-            c.setFirstName(rs.getString("first_name"));
-            c.setLastName(rs.getString("last_name"));
-            c.setRegistrationDate(rs.getDate("registration_date"));
-            c.setClientType(ClientType.getById(rs.getInt("client_type_id")));
-            list.add(c);
+            list.add(new Client(
+                    rs.getInt("id"),
+                    rs.getString("first_name"),
+                    rs.getString("last_name"),
+                    rs.getDate("registration_date"),
+                    ClientType.getById(rs.getInt("client_type_id")))
+            );
         }
         
         return list;
@@ -139,6 +143,6 @@ public class Client implements Serializable, IGeneralObject {
 
     @Override
     public String toString() {
-        return this.getId() + ", " + this.getFirstName() + this.getLastName();
+        return this.getFirstName() + " " + this.getLastName();
     }
 }

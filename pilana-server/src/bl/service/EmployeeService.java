@@ -11,7 +11,7 @@ import domain.Employee;
  *
  * @author Dudat
  */
-public interface UserService {
+public interface EmployeeService {
 
     public Employee login(Employee employee) throws Exception;
     

@@ -7,9 +7,12 @@ package bl.dao.impl;
 
 import bl.dao.InvoiceItemDao;
 import bl.dao.util.ConnectionFactory;
+import domain.IGeneralObject;
 import domain.InvoiceItem;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.util.List;
 
 /**
  *
@@ -36,6 +39,22 @@ public class InvoiceItemDaoImpl implements InvoiceItemDao{
         if(ps.executeUpdate() < 1){
             throw new Exception("System cannot insert invoice item: " + ii.getWoodProduct());
         }
+    }
+
+    @Override
+    public List<IGeneralObject> findByInvoiceId(Integer invoiceId) throws Exception {
+        Connection con = ConnectionFactory.getInstance().getConnection();
+        
+        String query = new StringBuilder()
+                .append("SELECT * FROM sawmill.")
+                .append(new InvoiceItem().getTableName())
+                .append(" WHERE ")
+                .append(new InvoiceItem(invoiceId).getObjectCase())
+                .toString();
+        
+        Statement stmt = con.createStatement();
+        
+        return new InvoiceItem().getList(stmt.executeQuery(query));
     }
     
 }

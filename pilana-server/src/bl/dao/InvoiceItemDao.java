@@ -5,7 +5,10 @@
  */
 package bl.dao;
 
+import domain.IGeneralObject;
+import domain.Invoice;
 import domain.InvoiceItem;
+import java.util.List;
 
 /**
  *
@@ -14,5 +17,7 @@ import domain.InvoiceItem;
 public interface InvoiceItemDao {
 
     public void insert(InvoiceItem ii) throws Exception;
+
+    public List<IGeneralObject> findByInvoiceId(Integer invoiceId) throws Exception;
     
 }

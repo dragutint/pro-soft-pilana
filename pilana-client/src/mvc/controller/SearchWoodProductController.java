@@ -9,6 +9,8 @@ import domain.WoodProduct;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import mvc.model.SearchWoodProductModel;
@@ -56,9 +58,13 @@ public class SearchWoodProductController extends AbstractController{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            WoodProduct selectedWoodProduct = view.getTableModel().getSelected(view.getSelectedRow());
-            new WoodProductViewController(selectedWoodProduct);
-            view.dispose();
+            try {
+                WoodProduct selectedWoodProduct = view.getTableModel().getSelected(view.getSelectedRow());
+                new WoodProductViewController(selectedWoodProduct);
+                view.dispose();
+            } catch (Exception ex) {
+                showError(view, ex.getMessage(), this.getClass().getName(), ex);
+            }
         }
     }
 }

@@ -11,8 +11,10 @@ import domain.Employee;
  *
  * @author Dudat
  */
-public interface UserDao {
+public interface EmployeeDao {
 
     public Employee get(String username) throws Exception;
+    
+    public Employee get(Integer id) throws Exception;
     
 }

@@ -22,5 +22,7 @@ public interface ClientDao {
     public void update(Client client) throws Exception;
 
     public void delete(Client client) throws Exception;
+
+    public Client get(int id) throws Exception;
     
 }

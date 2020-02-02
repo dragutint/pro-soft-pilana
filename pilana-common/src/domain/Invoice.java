@@ -140,4 +140,12 @@ public class Invoice implements Serializable, IGeneralObject{
         
         return list;
     }
+
+    public Double calculatePrice() {
+        Double result = 0.0;
+        for(InvoiceItem ii : this.getItems()){
+            result += (ii.getAmount() * ii.getWoodProduct().getPrice());
+        }
+        return result;
+    }
 }

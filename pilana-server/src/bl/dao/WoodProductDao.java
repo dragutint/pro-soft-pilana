@@ -18,5 +18,7 @@ public interface WoodProductDao {
     public List<IGeneralObject> find() throws Exception;
 
     public void updateBalance(WoodProduct woodProduct, Integer amount) throws Exception;
+
+    public WoodProduct get(Integer id) throws Exception;
     
 }

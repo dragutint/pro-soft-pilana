@@ -6,6 +6,7 @@
 package bl.service;
 
 import domain.Invoice;
+import java.util.List;
 
 /**
  *
@@ -14,5 +15,6 @@ import domain.Invoice;
 public interface InvoiceService {
 
     public Invoice addNewInvoice(Invoice invoice) throws Exception;
-    
+
+    public List<Invoice> find() throws Exception;
 }

@@ -34,6 +34,7 @@ public class MainScreenController extends AbstractController{
         view.setDeleteClientListener(new DeleteClientListener());
         view.setPreviewWoodProductListener(new WoodProductPreviewListener());
         view.setNewInvoiceListener(new NewInvoiceListener());
+        view.setPreviewInvoiceListener(new InvoicePreviewListener());
     }
     
     private class NewClientListener implements ActionListener {
@@ -98,6 +99,18 @@ public class MainScreenController extends AbstractController{
         public void actionPerformed(ActionEvent e) {
             try {
                 new NewInvoiceController();
+            } catch (Exception ex) {
+                showError(view, ex.getMessage(), MainScreenController.class.getName(), ex);
+            }
+        }
+    }
+    
+    private class InvoicePreviewListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                new InvoiceSearchController();
             } catch (Exception ex) {
                 showError(view, ex.getMessage(), MainScreenController.class.getName(), ex);
             }

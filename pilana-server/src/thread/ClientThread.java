@@ -93,6 +93,9 @@ public class ClientThread extends Thread {
                 case NEW_INVOICE:
                     data = (Invoice) bl.controller.Controller.getInstance().newInvoice((Invoice)requestObject.getData());
                     msg = "Successfully saved new invoice, invoice id: " + ((Invoice)data).getId(); break;
+                case FIND_INVOICES:
+                    data = bl.controller.Controller.getInstance().findInvoices();
+                    msg = "Successfully found all invocies"; break;
                 default:
                     throw new Exception("Invalid operation");
             }            

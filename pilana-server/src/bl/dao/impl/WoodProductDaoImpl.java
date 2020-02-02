@@ -54,5 +54,21 @@ public class WoodProductDaoImpl implements WoodProductDao{
             throw new Exception("System cannot update balance on wood product with id: " + woodProduct.getId());
         }
     }
+
+    @Override
+    public WoodProduct get(Integer id) throws Exception {
+        Connection con = ConnectionFactory.getInstance().getConnection();
+        
+        String query = new StringBuilder()
+                .append("SELECT * FROM sawmill.")
+                .append(new WoodProduct().getTableName())
+                .append(" WHERE ")
+                .append(new WoodProduct(id).getObjectCase())
+                .toString();
+        
+        Statement stmt = con.createStatement();
+        
+        return (WoodProduct) new WoodProduct().getObject(stmt.executeQuery(query));
+    }
     
 }
