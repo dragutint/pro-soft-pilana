@@ -7,7 +7,7 @@ package bl.service.impl;
 
 import bl.dao.ClientDao;
 import bl.dao.impl.ClientDaoImpl;
-import bl.dao.util.ConnectionFactory;
+import util.ConnectionFactory;
 import bl.service.ClientService;
 import bl.service.util.validation.ClientValidation;
 import domain.Client;

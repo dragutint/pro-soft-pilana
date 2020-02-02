@@ -5,6 +5,7 @@
  */
 package thread;
 
+import util.PropertyReader;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -21,7 +22,7 @@ public class ServerThread extends Thread {
     private List<ClientThread> clients;
 
     public ServerThread() throws IOException {
-        this.serverSocket = new ServerSocket(9050);
+        this.serverSocket = new ServerSocket(Integer.valueOf(PropertyReader.getInstance().getProperty("port")));
         clients = new ArrayList<>();
     }
 

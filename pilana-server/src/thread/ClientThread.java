@@ -5,7 +5,7 @@
  */
 package thread;
 
-import bl.dao.util.ConnectionFactory;
+import util.ConnectionFactory;
 import domain.Client;
 import domain.Employee;
 import domain.Invoice;

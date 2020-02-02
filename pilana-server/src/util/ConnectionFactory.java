@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bl.dao.util;
+package util;
 
+import util.PropertyReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
  *
- * @author student1
+ * @author Dudat
  */
 public class ConnectionFactory {
 
@@ -20,12 +21,11 @@ public class ConnectionFactory {
 
     private ConnectionFactory() throws SQLException {
         try {
-            // TODO move to properties file
-            String url = "jdbc:mysql://localhost:3306/sawmill";
-            String username = "root";
-            String password = "";
+            String url = PropertyReader.getInstance().getProperty("url");
+            String username = PropertyReader.getInstance().getProperty("user");
+            String password = PropertyReader.getInstance().getProperty("pass");
             connection = DriverManager.getConnection(url, username, password);
-            connection.setAutoCommit(false);
+            connection.setAutoCommit(Boolean.valueOf(PropertyReader.getInstance().getProperty("autocommit"))); 
         } catch (SQLException ex) {
             throw new SQLException("Connection is not created!");
         }

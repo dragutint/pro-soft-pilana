@@ -15,7 +15,7 @@ import bl.dao.impl.EmployeeDaoImpl;
 import bl.dao.impl.InvoiceDaoImpl;
 import bl.dao.impl.InvoiceItemDaoImpl;
 import bl.dao.impl.WoodProductDaoImpl;
-import bl.dao.util.ConnectionFactory;
+import util.ConnectionFactory;
 import bl.service.InvoiceService;
 import domain.Invoice;
 import domain.InvoiceItem;

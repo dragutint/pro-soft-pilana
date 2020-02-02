@@ -6,7 +6,7 @@
 package bl.dao.impl;
 
 import bl.dao.EmployeeDao;
-import bl.dao.util.ConnectionFactory;
+import util.ConnectionFactory;
 import domain.Employee;
 import java.sql.Connection;
 import java.sql.SQLException;

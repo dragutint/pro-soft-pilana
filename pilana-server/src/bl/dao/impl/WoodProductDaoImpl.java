@@ -6,7 +6,7 @@
 package bl.dao.impl;
 
 import bl.dao.WoodProductDao;
-import bl.dao.util.ConnectionFactory;
+import util.ConnectionFactory;
 import domain.IGeneralObject;
 import domain.WoodProduct;
 import java.sql.Connection;

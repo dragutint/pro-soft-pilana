@@ -6,7 +6,7 @@
 package bl.dao.impl;
 
 import bl.dao.ClientDao;
-import bl.dao.util.ConnectionFactory;
+import util.ConnectionFactory;
 import domain.Client;
 import domain.IGeneralObject;
 import java.sql.Connection;
