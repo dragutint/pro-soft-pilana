@@ -36,15 +36,14 @@ public class WoodProductDaoImpl implements WoodProductDao{
     }
 
     @Override
-    public void updateBalance(WoodProduct woodProduct) throws Exception {
+    public void updateBalance(WoodProduct woodProduct, Integer amount) throws Exception {
         Connection con = ConnectionFactory.getInstance().getConnection();
         
-        String upd = "UPDATE sawmill.wood_product SET balance = ?";
         String update = new StringBuilder()
-                .append("SELECT * FROM sawmill.")
+                .append("UPDATE sawmill.")
                 .append(woodProduct.getTableName())
                 .append(" SET balance = ")
-                .append(woodProduct.getBalance())
+                .append(woodProduct.getBalance() - amount)
                 .append(" WHERE ")
                 .append(woodProduct.getObjectCase())
                 .toString();

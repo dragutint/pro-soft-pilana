@@ -57,7 +57,9 @@ public class WoodProductTableModel extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public WoodProduct getSelected(int selectedRow) {
+    public WoodProduct getSelected(int selectedRow) throws Exception {
+        if(selectedRow == -1)
+            throw new Exception("You have not selected wood product");
         return list.get(selectedRow);
     }
 

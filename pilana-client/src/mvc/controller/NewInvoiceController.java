@@ -20,6 +20,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import mvc.model.NewInvoiceModel;
 import mvc.view.FNewInvoice;
+import mvc.view.util.form_validation.InvoiceItemFormValidation;
 import thread.ThreadController;
 import transfer.ResponseObject;
 import util.DOperation;
@@ -74,8 +75,11 @@ public class NewInvoiceController extends AbstractController {
             try {
                 WoodProduct selectedWoodProduct = view.getWoodProductsTableModel().getSelected(view.getSelectedWoodProduct());
                 Integer amount = Integer.valueOf(view.getTxtAmount().getText());
+                InvoiceItem item = new InvoiceItem(null, null, amount, selectedWoodProduct);
+
+                InvoiceItemFormValidation.validate(item);
                 
-                view.getInvoiceItemsTableModel().addWoodProduct(new InvoiceItem(null, null, amount, selectedWoodProduct));
+                view.getInvoiceItemsTableModel().addWoodProduct(item);
             } catch (NumberFormatException ex){
                 showError(view, "You have not entered amount", NewInvoiceController.class.getName(), ex);
             } catch (Exception ex) {
@@ -111,6 +115,7 @@ public class NewInvoiceController extends AbstractController {
                 
                 ResponseObject response = (ResponseObject) ThreadController.getInstance().request(DOperation.NEW_INVOICE, invoice);
                 showMessage(view, response.getMessage());
+                view.dispose();
             } catch (Exception ex) {
                 showError(view, ex.getMessage(), this.getClass().getName(), ex);
             }

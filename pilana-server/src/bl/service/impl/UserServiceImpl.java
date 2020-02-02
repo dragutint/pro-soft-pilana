@@ -9,7 +9,7 @@ import bl.dao.UserDao;
 import bl.dao.impl.UserDaoImpl;
 import domain.Employee;
 import bl.service.UserService;
-import bl.service.util.validation.user.UserValidation;
+import bl.service.util.validation.UserValidation;
 
 /**
  *
@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Employee login(Employee employee) throws Exception{
         Employee expected = userDao.get(employee.getUsername());
-        UserValidation.validateUserLogin(expected, employee);
+        UserValidation.validate(expected, employee);
         return expected;
     }
     

@@ -15,8 +15,8 @@ import bl.dao.util.ConnectionFactory;
 import bl.service.InvoiceService;
 import domain.Invoice;
 import domain.InvoiceItem;
-import validation.InvoiceItemValidation;
-import validation.InvoiceValidation;
+import bl.service.util.validation.InvoiceItemValidation;
+import bl.service.util.validation.InvoiceValidation;
 
 /**
  *
@@ -47,7 +47,7 @@ public class InvoiceServiceImpl implements InvoiceService {
             ii.setInvoiceId(savedInvoice.getId());
             ii.setOrdinal(++i);
             invoiceItemDao.insert(ii);
-            woodProductDao.updateBalance(ii.getWoodProduct());
+            woodProductDao.updateBalance(ii.getWoodProduct(), ii.getAmount());
         }
 
         ConnectionFactory.getInstance().getConnection().commit();

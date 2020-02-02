@@ -9,7 +9,6 @@ import domain.InvoiceItem;
 import domain.WoodProduct;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import validation.InvoiceItemValidation;
 
 /**
  *
@@ -58,7 +57,6 @@ public class InvoiceItemTableModel extends AbstractTableModel{
     }
     
     public void addWoodProduct(InvoiceItem item) throws Exception{
-        InvoiceItemValidation.validate(item);
         int index = getIndexByWoodProduct(item.getWoodProduct());
         
         if(index == -1){

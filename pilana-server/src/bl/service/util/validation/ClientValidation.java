@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package validation;
+package bl.service.util.validation;
 
+import util.AbstractValidation;
 import domain.Client;
 
 /**
@@ -14,7 +15,7 @@ import domain.Client;
 public class ClientValidation extends AbstractValidation{
     
     public static void validate(Client client) throws Exception{
-        notEmpty("First name", client.getFirstName());
-        notEmpty("Last name", client.getLastName());
+        notEmpty("You have not entered first name", client.getFirstName());
+        notEmpty("You have not entered last name", client.getLastName());
     }
 }
