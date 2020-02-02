@@ -10,6 +10,8 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import mvc.view.ViewMode;
@@ -76,9 +78,13 @@ public class SearchClientController extends AbstractController{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Client selectedClient = view.getTableModel().getSelected(view.getSelectedRow());
-            new ClientViewController(selectedClient);
-            view.dispose();
+            try {
+                Client selectedClient = view.getTableModel().getSelected(view.getSelectedRow());
+                new ClientViewController(selectedClient);
+                view.dispose();
+            } catch (Exception ex) {
+                showError(view, ex.getMessage(), this.getClass().getName(), ex);
+            }
         }
     }
     
@@ -86,9 +92,13 @@ public class SearchClientController extends AbstractController{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Client selectedClient = view.getTableModel().getSelected(view.getSelectedRow());
-            new EditClientController(selectedClient);
-            view.dispose();
+            try {
+                Client selectedClient = view.getTableModel().getSelected(view.getSelectedRow());
+                new EditClientController(selectedClient);
+                view.dispose();
+            } catch (Exception ex) {
+                showError(view, ex.getMessage(), this.getClass().getName(), ex);
+            }
         }
     }
     
@@ -103,7 +113,6 @@ public class SearchClientController extends AbstractController{
                 view.dispose();
             } catch (Exception ex) {
                 showError(view, ex.getMessage(), SearchClientController.class.getName(), ex);
-                view.dispose();
             }
         }
     }

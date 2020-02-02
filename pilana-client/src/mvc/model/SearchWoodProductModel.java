@@ -9,9 +9,11 @@ import domain.WoodProduct;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import thread.ThreadController;
 import transfer.ResponseObject;
 import util.DOperation;
+import util.NumberParser;
 
 /**
  *
@@ -28,7 +30,10 @@ public class SearchWoodProductModel {
         List<WoodProduct> searchResults = new ArrayList<>();
         
         for(WoodProduct wp : list){
-            if(wp.getName().toLowerCase().trim().contains(term.toLowerCase().trim()) || wp.getId() == Integer.valueOf(term)){
+            if(wp.getName().toLowerCase().trim().contains(term.toLowerCase().trim())){
+                searchResults.add(wp);
+            }
+            if(NumberParser.isNumeric(term) && Objects.equals(wp.getId(), Integer.valueOf(term.trim()))){
                 searchResults.add(wp);
             }
         }

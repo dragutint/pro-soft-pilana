@@ -9,6 +9,7 @@ import bl.dao.ClientDao;
 import bl.dao.impl.ClientDaoImpl;
 import bl.dao.util.ConnectionFactory;
 import bl.service.ClientService;
+import bl.service.util.validation.ClientValidation;
 import domain.Client;
 import domain.IGeneralObject;
 import java.util.List;
@@ -31,6 +32,8 @@ public class ClientServiceImpl implements ClientService{
 
     @Override
     public Client add(Client client) throws Exception {
+        ClientValidation.validate(client);
+        
         Client c =  clientDao.add(client);
         ConnectionFactory.getInstance().getConnection().commit();
         return c;

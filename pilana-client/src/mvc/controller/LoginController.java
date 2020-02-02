@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import mvc.model.LoginModel;
+import mvc.view.util.form_validation.LoginFormValidation;
 import transfer.ResponseObject;
 
 /**
@@ -52,9 +53,11 @@ public class LoginController extends AbstractController{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            String username = view.getUsername().getText().trim();
-            String password = view.getPassword().getText().trim();
             try {
+                String username = view.getUsername().getText().trim();
+                String password = view.getPassword().getText().trim();
+                LoginFormValidation.validate(new Employee(username, password));
+                
                 ResponseObject response = model.login(username, password);
                 
                 new MainScreenController((Employee) response.getData());

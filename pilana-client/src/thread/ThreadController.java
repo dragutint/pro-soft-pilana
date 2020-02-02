@@ -58,8 +58,10 @@ public class ThreadController {
         this.socket = socket;
     }
     
-    public void closeApp() {
-        JOptionPane.showMessageDialog(null, "Error in connection.Check server and restart Application.");
+    public void closeApp() throws IOException {
+        objectOutputStream.close();
+        objectInputStream.close();
+        socket.close();
         System.exit(0);
     }
 
@@ -76,7 +78,8 @@ public class ThreadController {
         requestObject.setOperation(operation);
         requestObject.setData(object);
 
-        objectOutputStream.writeObject(requestObject);
+        objectOutputStream.reset();
+        objectOutputStream.writeUnshared(requestObject);
         objectOutputStream.flush();
 
         ResponseObject responseObject = (ResponseObject) objectInputStream.readObject();

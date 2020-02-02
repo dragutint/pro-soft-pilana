@@ -50,7 +50,8 @@ public class ClientTableModel extends AbstractTableModel {
         }
     }
     
-    public Client getSelected(int rowNum){
+    public Client getSelected(int rowNum) throws Exception{
+        if(rowNum == -1) throw new Exception("Client is not selected");
         return list.get(rowNum);
     }
 

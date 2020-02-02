@@ -9,6 +9,8 @@ import domain.Employee;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mvc.view.ViewMode;
 import mvc.view.FMainScreen;
 import mvc.model.ClientModel;
@@ -35,6 +37,7 @@ public class MainScreenController extends AbstractController{
         view.setPreviewWoodProductListener(new WoodProductPreviewListener());
         view.setNewInvoiceListener(new NewInvoiceListener());
         view.setPreviewInvoiceListener(new InvoicePreviewListener());
+        view.setExitListener(new ExitListener());
     }
     
     private class NewClientListener implements ActionListener {
@@ -113,6 +116,17 @@ public class MainScreenController extends AbstractController{
                 new InvoiceSearchController();
             } catch (Exception ex) {
                 showError(view, ex.getMessage(), MainScreenController.class.getName(), ex);
+            }
+        }
+    }
+    
+    private class ExitListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                ThreadController.getInstance().closeApp();
+            } catch (IOException ex) {
+                showError(view, ex.getMessage(), this.getClass().getName(), ex);
             }
         }
     }

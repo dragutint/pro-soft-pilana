@@ -13,9 +13,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sun.net.ConnectionResetException;
 import transfer.RequestObject;
 import transfer.ResponseObject;
 import util.DResponseStatus;
@@ -39,14 +41,20 @@ public class ClientThread extends Thread {
 
     @Override
     public void run() {
-        while (!socket.isClosed()) {
+        while (!socket.isClosed() && socket.isConnected()) {
             try {
                 RequestObject requestObject = (RequestObject) objectInputStream.readObject();
                 ResponseObject responseObject = handleRequest(requestObject);
 
                 objectOutputStream.writeObject(responseObject);
 
-            } catch (IOException | ClassNotFoundException ex) {
+            } catch(SocketException ex){
+                try {
+                    socket.close();
+                } catch (IOException ex1) {
+                    Logger.getLogger(ClientThread.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+            } catch (IOException | ClassNotFoundException | SQLException ex) {
                 ResponseObject responseObject = new ResponseObject();
                 responseObject.setStatus(DResponseStatus.ERROR);
                 responseObject.setMessage(ex.getMessage());
@@ -56,8 +64,6 @@ public class ClientThread extends Thread {
                 } catch (IOException ex1) {
                     Logger.getLogger(ClientThread.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } catch (SQLException ex) {
-                Logger.getLogger(ClientThread.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

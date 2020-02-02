@@ -158,4 +158,8 @@ public class FMainScreen extends javax.swing.JFrame {
     public void setPreviewInvoiceListener(ActionListener listener) {
         btnFindInvoice.addActionListener(listener);
     }
+
+    public void setExitListener(ActionListener listener) {
+        btnExit.addActionListener(listener);
+    }
 }

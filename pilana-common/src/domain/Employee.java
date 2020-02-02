@@ -116,7 +116,7 @@ public class Employee implements Serializable, IGeneralObject{
                     rs.getString("username"),
                     rs.getString("password")
             );
-        throw new SQLException("No employee to return");
+        throw new SQLException("Wrong username");
     }
 
     @Override

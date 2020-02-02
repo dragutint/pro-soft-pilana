@@ -15,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
  * @author Dudat
  */
 public class InvoiceItemTableModel extends AbstractTableModel{
-    List<InvoiceItem> items;
+    private List<InvoiceItem> items;
     boolean extended; 
     
     public InvoiceItemTableModel(List<InvoiceItem> list, boolean extended) {
