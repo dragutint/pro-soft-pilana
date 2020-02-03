@@ -9,6 +9,7 @@ import domain.Client;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,17 +61,32 @@ public class SearchClientController extends AbstractController{
 
         @Override
         public void insertUpdate(DocumentEvent e) {
-            view.getTableModel().setClients(model.search(view.getTxtSearchCriteria().getText().trim(), allClients));
+            try {
+                view.getTableModel().setClients(model.search(view.getTxtSearchCriteria().getText().trim(), allClients));
+            } catch (Exception ex) {
+                view.getTableModel().setClients(new ArrayList<>());
+                showError(view, ex.getMessage(), this.getClass().getName(), ex);
+            }
         }
 
         @Override
         public void removeUpdate(DocumentEvent e) {
-            view.getTableModel().setClients(model.search(view.getTxtSearchCriteria().getText().trim(), allClients));
+            try {
+                view.getTableModel().setClients(model.search(view.getTxtSearchCriteria().getText().trim(), allClients));
+            } catch (Exception ex) {
+                view.getTableModel().setClients(new ArrayList<>());
+                showError(view, ex.getMessage(), this.getClass().getName(), ex);
+            }
         }
 
         @Override
         public void changedUpdate(DocumentEvent e) {
-            view.getTableModel().setClients(model.search(view.getTxtSearchCriteria().getText().trim(), allClients));
+            try {
+                view.getTableModel().setClients(model.search(view.getTxtSearchCriteria().getText().trim(), allClients));
+            } catch (Exception ex) {
+                view.getTableModel().setClients(new ArrayList<>());
+                showError(view, ex.getMessage(), this.getClass().getName(), ex);
+            }
         }
     }
     

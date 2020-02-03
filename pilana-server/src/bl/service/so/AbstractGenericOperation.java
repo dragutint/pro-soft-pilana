@@ -32,7 +32,7 @@ public abstract class AbstractGenericOperation {
         } catch (Exception ex) {
             ex.printStackTrace();
             rollbackTransaction();
-            throw ex;
+            throw new Exception("Sistem ne moze da izvrsi operaciju");
         }
     }
 

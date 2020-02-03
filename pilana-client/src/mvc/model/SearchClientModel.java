@@ -24,7 +24,7 @@ public class SearchClientModel {
         return (List<Client>) response.getData();
     }
 
-    public List<Client> search(String term, List<Client> allClients) {
+    public List<Client> search(String term, List<Client> allClients) throws Exception {
         List<Client> searchResults = new ArrayList<>();
         
         for(Client c : allClients){
@@ -34,7 +34,7 @@ public class SearchClientModel {
                 searchResults.add(c);
             }
         }
-        
+        if(searchResults.size()==0) throw new Exception("System cannot find clients for entered criteria");
         return searchResults;
     }
     

@@ -78,28 +78,28 @@ public class ClientThread extends Thread {
             
             switch (requestObject.getOperation()) {
                 case LOGIN:
-                    data = bl.controller.Controller.getInstance().login((Employee) requestObject.getData()); 
+                    data = controller.Controller.getInstance().login((Employee) requestObject.getData()); 
                     msg = "Successfully logged in, user: " + data; break;
                 case ADD_NEW_CLIENT:
-                    data = bl.controller.Controller.getInstance().addNewClient((Client)requestObject.getData());
+                    data = controller.Controller.getInstance().addNewClient((Client)requestObject.getData());
                     msg = "Successfully added new Client. Generated ID: " + ((Client)data).getId(); break;
                 case FIND_CLIENTS:
-                    data = bl.controller.Controller.getInstance().findClients();
+                    data = controller.Controller.getInstance().findClients();
                     msg = "Successfully found all clients."; break;
                 case EDIT_CLIENT:
-                    bl.controller.Controller.getInstance().editClient((Client)requestObject.getData());
+                    controller.Controller.getInstance().editClient((Client)requestObject.getData());
                     msg = "Successfully edited client"; break;
                 case DELETE_CLIENT:
-                    bl.controller.Controller.getInstance().deleteClient((Client)requestObject.getData());
+                    controller.Controller.getInstance().deleteClient((Client)requestObject.getData());
                     msg = "Successfully deleted client"; break;
                 case FIND_WOOD_PRODUCTS:
-                    data = bl.controller.Controller.getInstance().findWoodProducts();
+                    data = controller.Controller.getInstance().findWoodProducts();
                     msg = "Successfully found all wood products"; break;
                 case NEW_INVOICE:
-                    data = (Invoice) bl.controller.Controller.getInstance().newInvoice((Invoice)requestObject.getData());
+                    data = (Invoice) controller.Controller.getInstance().newInvoice((Invoice)requestObject.getData());
                     msg = "Successfully saved new invoice, invoice id: " + ((Invoice)data).getId(); break;
                 case FIND_INVOICES:
-                    data = bl.controller.Controller.getInstance().findInvoices();
+                    data = controller.Controller.getInstance().findInvoices();
                     msg = "Successfully found all invocies"; break;
                 default:
                     throw new Exception("Invalid operation");
